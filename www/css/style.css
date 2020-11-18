@@ -1,5 +1,9 @@
+body
+{
+	background-color: rgb(67, 70, 100);
+}
 #header
 {
-	background:red;
+	background:grey;
 	height: 4rem;
 }
