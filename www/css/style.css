@@ -69,3 +69,11 @@ body {
   font-size: 28px;
   padding: 0px 10px;
 }
+
+.cv{
+	height: 49vw;
+	width: 75%;
+	margin-left: 17%;
+	background-color: lightgrey;
+	text-align: center;
+}
