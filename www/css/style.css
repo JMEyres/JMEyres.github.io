@@ -21,16 +21,6 @@ body
 	background-image: url("../images/tile.png");
 	background-color: rgb(67, 70, 100);
 }
-#header
-{
-	background:grey;
-	height: 4rem;
-}
-
-
-body, html {
-  height: 100%
-}
 
 .bg {
   height: 100%;
@@ -55,6 +45,7 @@ hr {
   margin: auto;
   width: 40%;
 }
+
 body {
   font-family: "Courier New", Courier, monospace;
 }
@@ -96,7 +87,6 @@ body {
 	left:19%;
 	height: 99%;
 	width: 80%;
-
 }
 
 pre{
