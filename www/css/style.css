@@ -1,3 +1,21 @@
+header{
+	color: white;
+	position: fixed;
+	left: 16%;
+	background-color: darkgrey;
+	height:auto;
+	width: 83%;
+}
+
+footer{
+	color: white;
+	position: fixed;
+	left: 16%;
+	bottom: 1%;
+	height:auto;
+	width: 83%;
+}
+
 body
 {
 	background-image: url("../images/tile.png");
