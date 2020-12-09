@@ -77,6 +77,7 @@ body {
 	width: 81%;
 	margin-left: 19%;
 }
+
 pre{
   text-align: left;
   display: inline-block;
@@ -115,6 +116,11 @@ pre{
 
 .right2 {
   left: 57.5%;
+	top:50%;
+}
+
+.center{
+	left:37%;
 	top:50%;
 }
 
