@@ -1,6 +1,6 @@
 header{
 	color: white;
-	position: fixed;
+	position: absolute;
 	left: 16%;
 	background-color: darkgrey;
 	height:auto;
@@ -75,7 +75,7 @@ body {
 .sidenav a {
   padding: 6px 8px 6px 16px;
   text-decoration: none;
-  font-size: 25px;
+  font-size: auto;
   color: #818181;
   display: block;
 }
@@ -91,9 +91,12 @@ body {
 }
 
 .cv{
+	position: absolute;
+	top:2%;
+	left:19%;
 	height: 99%;
-	width: 81%;
-	margin-left: 19%;
+	width: 80%;
+
 }
 
 pre{
