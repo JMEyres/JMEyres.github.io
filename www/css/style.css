@@ -1,5 +1,6 @@
 body
 {
+	background-image: url("../images/tile.png");
 	background-color: rgb(67, 70, 100);
 }
 #header
