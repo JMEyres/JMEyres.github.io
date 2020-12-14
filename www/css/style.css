@@ -102,6 +102,20 @@ pre{
 	text-align: center;
 }
 
+p{
+	text-align: left;
+	display: inline-block;
+	margin-left: 15.6%;
+	margin-right: 0.5%;
+	margin-top: 2%;
+	background-color: lightgray;
+	border:5px;
+	border-style: groove;
+	border-color: darkgrey;
+	font-size: 1.25em;
+	text-align: left;
+}
+
 .split {
   height: 50%;
   width: 42.5%;
@@ -146,4 +160,9 @@ pre{
 .centered img {
 	height:25vw;
 	width:41vw;
+}
+
+img{
+	position: absolute;
+	left:16%;
 }
