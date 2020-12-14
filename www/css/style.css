@@ -94,7 +94,7 @@ pre{
   display: inline-block;
   margin-left: 9%;
   background-color: lightgray;
-  border:5px;
+  border:0.3vw;
 	padding:2px;
   border-style: groove;
   border-color: darkgrey;
@@ -109,7 +109,7 @@ p{
 	margin-right: 0.5%;
 	margin-top: 2%;
 	background-color: lightgray;
-	border:5px;
+	border:0.3vw;
 	border-style: groove;
 	border-color: darkgrey;
 	font-size: 1.25em;
@@ -160,9 +160,4 @@ p{
 .centered img {
 	height:25vw;
 	width:41vw;
-}
-
-img{
-	position: absolute;
-	left:16%;
 }
