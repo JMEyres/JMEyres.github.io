@@ -200,3 +200,10 @@ p{
   transform: translate(-50%, -50%);
   text-align: center;
 }
+
+canvas{
+	position: absolute;
+	left: 16%;
+	top: 4%;
+	background: grey;
+}
