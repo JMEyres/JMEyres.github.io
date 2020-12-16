@@ -13,22 +13,39 @@
       var playerSize = 0;
 
       function keydown(event)
+      //This function moves the character and loops it to move back onto the screenwhen you go off the edge of canvas
       {
         if (event.key == "ArrowLeft")
         {
           playerPosX-=5;
+          if (playerPosX + 105 < 0)
+          {
+            playerPosX = canvas.width;
+          }
         }
         else if (event.key == "ArrowRight")
         {
           playerPosX+=5;
+          if(playerPosX > canvas.width)
+          {
+            playerPosX = 0 - 105;
+          }
         }
         else if (event.key == "ArrowDown")
         {
           playerPosY +=5;
+          if (playerPosY > canvas.height)
+          {
+            playerPosY = 0 - 110;
+          }
         }
         else if (event.key == "ArrowUp")
         {
           playerPosY -=5;
+          if (playerPosY + 110 < 0)
+          {
+            playerPosY = canvas.height;
+          }
         }
       }
 
