@@ -9,8 +9,9 @@
       var animSpeed = 10;
       var frameNum = 0;
       var playerPosX = 0;
-      var playerPosY = 0;
+      var playerPosY = 10;
       var playerSize = 0;
+      //Shown above is the definitions of variables
 
       function keydown(event)
       //This function moves the character and loops it to move back onto the screenwhen you go off the edge of canvas
@@ -46,6 +47,7 @@
           {
             playerPosY = canvas.height;
           }
+          //These second if statements are what loops the character when it goes off screen
         }
       }
 
@@ -54,6 +56,8 @@
         playerImage = new Image();
 
         playerImage.src = "images/player.png";
+
+        //This function loads the image of the player
       }
 
 
@@ -66,11 +70,14 @@
 
         canvas.width = 640;
         canvas.height = 480;
+        //This defines the size of the canvas on the web page
 
         var ctx = canvas.getContext('2d');
-        playerSize = 75;
+        playerSize = 50;
+        //This defines the size of the player
 
         draw(ctx);
+        //This is running a function called draw
 
       }
 
@@ -78,9 +85,11 @@
       {
         ctx.fillStyle = 'gray';
         ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.width);
+        //This is filling the canvas with a coloured background
 
         var frameWidth = playerImage.width / 5;
         var frameHeight = playerImage.height / 4;
+        //This splits up the sprite sheet into the different sprite to allow for animation
 
         ctx.drawImage(playerImage,
         frameWidth * frameNum, 0, frameWidth, frameHeight,
@@ -90,13 +99,21 @@
         if(x % animSpeed == 0)
         {
           frameNum++
+          //This if statement defines the speed at which the game cycles through the character animation
         }
 
         if (frameNum > 4)
         {
           frameNum = 0;
         }
-
+        ctx.beginPath();
+        ctx.rect(1, 1, 200, 10);
+        ctx.rect(1, 51, 150, 10);
+        ctx.rect(201, 1, 10, 150);
+        ctx.rect(151, 51, 10, 150);
+        ctx.rect(201, 201, 10, 150);
+        ctx.stroke();
+        //Above is creating the walls for the simple maze game i have implemented on my website
         window.requestAnimationFrame(function(){draw(ctx);});
       }
 
@@ -108,6 +125,7 @@
   <body>
 
     <header> Josh Eyres Portfolio </header>
+    <!--This is just my header for the website -->
 
     <div class="sidenav">
       <a href="Index.html">Home</a>
@@ -115,12 +133,15 @@
       <a href="uniWork.html">University work</a>
       <a href="cv.html">CV</a>
       <a href="game.html">Game</a>
+      <!--This is how i  created my side bar to naviagte the website -->
     </div>
 
     <canvas id = "canvas" style = "background: gray"></canvas>
+    <!--This defines the canvas -->
 
     <footer style="background-color: darkgrey;">Email: s5304176@bournemouth.ac.uk</footer>
     <footer style="text-align:right; ">Phone: 01234 567890</footer>
+    <!--This is how i created the footer at the bottom of my pages -->
 
   </body>
 </html>
