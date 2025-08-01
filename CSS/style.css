@@ -1,17 +1,71 @@
-body{
-    color:rgb(230, 132, 5);
-    background-color: rgb(73, 72, 72);
-    font-family: 'Tilt Neon', cursive ,Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+:root {
+    --bg-color: #1b1f1b;
+    --text-color: #e6eae3;
+    --accent-color: #5f8d4e;
+    --card-bg: #2e342e;
 }
 
-h1{
-    
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
 }
 
-h2{
-
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
 }
 
-p{
-    
+header.hero {
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: var(--card-bg);
+}
+
+header.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+}
+
+section {
+    padding: 3rem 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+h2 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.project-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.project-card {
+    flex: 1 1 calc(33% - 1rem);
+    background-color: var(--card-bg);
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid var(--accent-color);
+}
+
+.contact a {
+    display: inline-block;
+    margin: 0.5rem;
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    font-size: 0.9rem;
 }
