@@ -1,9 +1,9 @@
 
 :root {
-    --bg-color: #1b1f1b;
+    --bg-color: #0B0E14;
     --text-color: #e6eae3;
-    --accent-color: #5f8d4e;
-    --card-bg: #2e342e;
+    --accent-color: #FF7A1A;
+    --card-bg: #1A1F29;
 }
 
 * {
@@ -29,6 +29,9 @@ header.hero h1 {
     font-size: 3rem;
     margin-bottom: 0.5rem;
     color: var(--accent-color);
+}
+header.hero img{
+    text-align: left;
 }
 
 section {
