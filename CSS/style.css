@@ -4,6 +4,7 @@
     --text-color: #e6eae3;
     --accent-color: #FF7A1A;
     --card-bg: #192923;
+    --secondary-accent-color: #e3cdaf;
 }
 
 * {
@@ -19,19 +20,49 @@ body {
     line-height: 1.6;
 }
 
-header.hero {
-    padding: 4rem 2rem;
-    text-align: center;
-    background-color: var(--card-bg);
+.hero {
+    display: flex;            /* Side-by-side layout */
+    align-items: center;      /* Vertically center items */
+    justify-content: space-between;
+    padding: 20px;
+    background: var(--card-bg);         /* Example background */
+    color: white;
 }
 
-header.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
+.hero-left {
+    display: flex;
+    align-items: center;
+}
+
+.hero-image img {
+    max-width: 150px;         /* Control logo size */
+    height: auto;
+    margin-right: 20px;       /* Space between image and text */
+}
+
+.hero-text h1 {
+    margin: 0;
+    font-size: 2rem;      /* Name size */
     color: var(--accent-color);
 }
-header.hero img{
-    text-align: left;
+
+.hero-text p {
+    margin: 5px 0 0;
+    font-size: 1.2rem;        /* "Game Dev" size */
+    color: var(--text-color);              /* Slightly lighter for contrast */
+}
+
+.hero-links a {
+    color: var(--accent-color);   /* Base color */
+    text-decoration: none;
+}
+
+/* Make the color stay the same for all states */
+.hero-links a:link,
+.hero-links a:visited,
+.hero-links a:hover,
+.hero-links a:active {
+    color: var(--accent-color);
 }
 
 section {
