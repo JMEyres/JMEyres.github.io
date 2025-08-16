@@ -55,12 +55,16 @@ body {
 .hero-links a {
     color: var(--accent-color);   /* Base color */
     text-decoration: none;
+    margin-left: 1rem;
+}
+
+.hero-links a:hover{
+    text-decoration: underline;
 }
 
 /* Make the color stay the same for all states */
 .hero-links a:link,
 .hero-links a:visited,
-.hero-links a:hover,
 .hero-links a:active {
     color: var(--accent-color);
 }
@@ -102,4 +106,16 @@ footer {
     padding: 2rem;
     background-color: var(--card-bg);
     font-size: 0.9rem;
+}
+
+.simple-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--card-bg); /* dark green */
+}
+
+.simple-header .logo img {
+  height: 50px;
 }
