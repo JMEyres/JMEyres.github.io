@@ -1,0 +1,178 @@
+:root {
+    --bg-color: #0B1410;
+    --text-color: #e6eae3;
+    --accent-color: #FF7A1A;
+    --card-bg: #192923;
+    --secondary-accent-color: #e3cdaf;
+    --shadow-color-dim: rgba(255, 122, 26, 0.6);
+    --shadow-color-bright: rgba(255, 122, 26, 0.8);
+}
+
+/* General page styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif; /* You can replace this with your chosen font */
+    color: white;
+    background-color: var(--bg-color); /* Dark background color */
+}
+
+/* -------------------- Hero Section Styles -------------------- */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* This makes it a full-page banner */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    background-color: var(--card-bg); /* A slightly lighter dark color for the hero */
+    
+    /* Placeholder for the background image or video */
+    background-image: url('Images/hero-bg.jpg'); /* Replace with your image URL */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    max-width: 800px;
+}
+
+.hero-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.hero-header img {
+    height: 60px; /* Adjust logo size */
+    border-radius: 50%;
+}
+
+.hero-header h1 {
+    font-size: 3rem;
+    color: white;
+    margin: 0;
+}
+
+.hero-header p {
+    font-size: 1.2rem;
+    color: var(--accent-color); /* Your orange accent color */
+    margin: 0;
+}
+
+.hero-about {
+    font-size: 1.1rem;
+    color: #e0e0e0;
+    max-width: 600px;
+}
+
+.hero-links {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.hero-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.cta-button {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+/* -------------------- Main Content Section -------------------- */
+.page-content {
+    background-color: var(--bg-color);
+    padding: 60px 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.contact-section {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Your existing card styles */
+.card {
+    background: var(--secondary-accent-color);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 0 15px var(--shadow-color-dim);
+    transition: box-shadow 1.0s ease-in-out;
+    color: black;
+    max-width: 600px; /* You can adjust this for a specific width */
+}
+
+.card:hover {
+    box-shadow: 0 0 15px var(--shadow-color-bright);
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--card-bg);
+}
+
+/* -------------------- Media Queries for Mobile -------------------- */
+@media (max-width: 768px) {
+    /* Adjust hero section and content for smaller screens */
+    .hero-section {
+        flex-direction: column;
+        justify-content: flex-start; /* Align content from the top */
+        padding-top: 50px;
+    }
+    
+    .hero-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .hero-header h1 {
+        font-size: 2rem; /* Make the heading smaller */
+    }
+
+    .hero-header p {
+        font-size: 1rem;
+    }
+    
+    /* Reposition and stack the navigation links */
+    .hero-links {
+        position: static; /* Take it out of absolute positioning */
+        top: auto;
+        right: auto;
+        margin-top: 20px;
+    }
+    
+    .hero-links a {
+        padding: 5px 10px;
+        font-size: 0.9rem;
+    }
+
+    /* Adjust main content padding */
+    .page-content {
+        padding: 40px 10px;
+    }
+}

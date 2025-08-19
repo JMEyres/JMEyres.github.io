@@ -6,7 +6,7 @@
     --card-bg: #192923;
     --secondary-accent-color: #e3cdaf;
     --shadow-color-dim: rgba(255, 122, 26, 0.6);
-    --shadow-color-bright: rgba(255, 122, 26, 1.0);
+    --shadow-color-bright: rgba(255, 122, 26, 0.8);
 }
 
 * {
@@ -35,7 +35,7 @@ main > section {
     flex-direction: column;
     justify-content: flex-start;   /* Content starts at top of section */
     align-items: flex-start;       /* Content left-aligned */
-    max-width: 70%;              /* Don’t stretch full width */
+    max-width: 85%;              /* Don’t stretch full width */
     width: 90%;                    /* Make responsive on small screens */
     padding: 0px;
 }
