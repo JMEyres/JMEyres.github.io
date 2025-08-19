@@ -5,6 +5,8 @@
     --accent-color: #FF7A1A;
     --card-bg: #192923;
     --secondary-accent-color: #e3cdaf;
+    --shadow-color-dim: rgba(255, 122, 26, 0.6);
+    --shadow-color-bright: rgba(255, 122, 26, 1.0);
 }
 
 * {
@@ -35,7 +37,7 @@ main > section {
     align-items: flex-start;       /* Content left-aligned */
     max-width: 70%;              /* Don’t stretch full width */
     width: 90%;                    /* Make responsive on small screens */
-    padding: 20px;
+    padding: 0px;
 }
 
 body {
@@ -79,13 +81,30 @@ body {
     color: var(--text-color);              /* Slightly lighter for contrast */
 }
 
-.hero-links a {
+.hero-links a,
+.social-links a {
     color: var(--accent-color);   /* Base color */
     text-decoration: none;
     margin-left: 1rem;
 }
 
-.hero-links a:hover{
+.card {
+  background: #e1cbae;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 0 15px var(--shadow-color-dim);
+  transition: box-shadow 0.4s ease-in-out;
+  color: black;
+  width: 100%;
+  padding: 20px;
+}
+
+.card:hover {
+  box-shadow: 0 0 20px var(--shadow-color-bright);
+}
+
+.hero-links a:hover,
+.social-links a:hover {
     text-decoration: underline;
 }
 
