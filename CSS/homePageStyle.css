@@ -53,7 +53,7 @@ body {
 }
 
 .hero-header img {
-    height: 60px; /* Adjust logo size */
+    height: 120px; /* Adjust logo size */
     border-radius: 50%;
 }
 
@@ -84,19 +84,30 @@ body {
 }
 
 .hero-links a {
-    color: white;
+    color: var(--accent-color);   /* Base color */
     text-decoration: none;
     font-weight: bold;
 }
 
+.hero-links a:hover {
+    text-decoration: underline;
+}
+
 .cta-button {
     background-color: var(--accent-color);
+    display: inline-block;
     color: white;
     padding: 15px 30px;
     text-decoration: none;
     border-radius: 50px;
     font-weight: bold;
     margin-top: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.cta-button:hover {
+    transform: scale(1.1);
+    color:black;
 }
 
 /* -------------------- Main Content Section -------------------- */
