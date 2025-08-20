@@ -28,13 +28,29 @@ body {
     align-items: center;
     text-align: center;
     overflow: hidden;
-    background-color: var(--card-bg); /* A slightly lighter dark color for the hero */
     
     /* Placeholder for the background image or video */
-    background-image: url('Images/hero-bg.jpg'); /* Replace with your image URL */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5)), url('../Images/hero-bg.png'); /* Replace with your image URL */
+    background-color: var(--card-bg); /* A slightly lighter dark color for the hero */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.2); /* Adjust opacity */
+  z-index: 1;
+}
+
+.hero-section > * {
+  position: relative;
+  z-index: 2;
 }
 
 .hero-content {

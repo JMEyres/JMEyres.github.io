@@ -1,31 +1,26 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Josh Eyres Portfolio</title>
-    <link rel="stylesheet" href="CSS/homePageStyle.css" />
+    <link rel="stylesheet" href="CSS/style.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
     <link rel="icon" type="image/png" href="Images/favicon-32x32.png">
 </head>
 <body>
-
-    <header class="hero-section">
-        <div class="hero-content">
-            <div class="hero-header">
-                <div class="hero-image">
-                    <img src ="Images/Logo.jpg" alt="Josh Eyres Logo"></img>
-                </div>
-                <div class="hero-text">
-                    <h1>Josh Eyres</h1>
-                    <p>Game Developer & Creative Technologist</p>
-                </div>
-            </div>
-            <div class="hero-about">
-                <p>Hello! I'm Josh, a game developer passionate about interactive storytelling, AI, and immersive design.</p>
-                <a href="./portfolio.html" class="cta-button">View My Work</a>
-            </div>
+    <header class="hero" data-aos="fade-down">
+    <div class="hero-left">
+        <div class="hero-image">
+            <img src ="Images/Logo.jpg" alt="Josh Eyres Logo"></img>
         </div>
+        <div class="hero-text">
+            <h1>Josh Eyres</h1>
+            <p>Game Developer & Creative Technologist</p>
+        </div>
+    </div>
+    <div class="hero-right">
         <nav class="hero-links">
             <a href="./portfolio.html">Portfolio</a>
             <a href="./about.html">About</a>
@@ -33,18 +28,25 @@
             <a href="./cv.html">CV</a>
             <a href="./contact.html">Contact</a>
         </nav>
+    </div>
     </header>
 
-    <main class="page-content">
-        <section class="contact-section">
-            <div class="card" data-aos="fade-up" data-aos-once="true">
+    <main>
+        <section data-aos="fade-up" data-aos-once="true">
+            <section class="card">
+                <h2>About Me</h2>
+                <p>Hello! I'm Josh, a game developer passionate about interactive storytelling, AI, and immersive design.</p>
+            </section>
+        </section>
+        <section class="contact" data-aos="fade-up">
+            <section class="card">
                 <h2>Contact</h2>
                 <p>Email: <a href="mailto:jmeyres.business@gmail.com">jmeyres.business@gmail.com</a></p>
                 <div class="social-links">
                     <a href="https://github.com/yourusername" target="_blank">GitHub</a>
                     <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
                 </div>
-            </div>
+            </section>
         </section>
     </main>
     
