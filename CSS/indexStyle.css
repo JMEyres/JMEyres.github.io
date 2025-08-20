@@ -1,5 +1,7 @@
 :root {
     --bg-color: #0B1410;
+    --bg-gradient-start: rgba(11, 20, 16, 0.1);
+    --bg-gradient-end: rgba(11, 20, 16, 0.8);
     --text-color: #e6eae3;
     --accent-color: #FF7A1A;
     --card-bg: #192923;
@@ -30,7 +32,7 @@ body {
     overflow: hidden;
     
     /* Placeholder for the background image or video */
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5)), url('../Images/hero-bg.png'); /* Replace with your image URL */
+    background: linear-gradient(to bottom, var(--bg-gradient-start), var(--bg-gradient-end)), url('../Images/hero-bg.png'); /* Replace with your image URL */
     background-color: var(--card-bg); /* A slightly lighter dark color for the hero */
     background-size: cover;
     background-position: center;
