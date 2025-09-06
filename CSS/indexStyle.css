@@ -92,24 +92,6 @@ body {
     max-width: 600px;
 }
 
-.hero-links {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    gap: 20px;
-}
-
-.hero-links a {
-    color: var(--accent-color);   /* Base color */
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.hero-links a:hover {
-    text-decoration: underline;
-}
-
 .cta-button {
     background-color: var(--accent-color);
     display: inline-block;
@@ -257,19 +239,6 @@ footer {
 
     .hero-header p {
         font-size: 1rem;
-    }
-    
-    /* Reposition and stack the navigation links */
-    .hero-links {
-        position: static; /* Take it out of absolute positioning */
-        top: auto;
-        right: auto;
-        margin-top: 20px;
-    }
-    
-    .hero-links a {
-        padding: 5px 10px;
-        font-size: 0.9rem;
     }
 
     /* Adjust main content padding */
