@@ -184,10 +184,12 @@ footer {
     justify-content: center;
     width: 200px;
     height: 200px;
-    background: linear-gradient(145deg, var(--secondary-accent-color), #cfae81f9); /* darker theme style */
+    background: rgba(0,0,0,0.45);
     border-radius: 20px;
+    border: #FF7A1A medium;
+    border-style: outset;
     text-decoration: none;
-    color: #333;
+    color: var(--accent-color);
     font-size: 1.2rem;
     font-weight: 500;
     box-shadow: 0 6px 15px rgba(0,0,0,0.08);
@@ -207,6 +209,7 @@ footer {
     transform: translateY(-10px) scale(1.05) rotateZ(1deg);
     box-shadow: 0 12px 25px rgba(0,0,0,0.15);
     background: linear-gradient(135deg, var(--accent-color), #844315);
+    color: #333;
   }
 
   .card:hover .card-icon {
