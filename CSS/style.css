@@ -1,30 +1,19 @@
-
 :root {
+    /* Background & Core Colors */
     --bg-color: #0B1410;
-    --bg-gradient-start: rgba(11, 20, 16, 0.1);
-    --bg-gradient-end: rgba(11, 20, 16, 0.8);
+    --bg-gradient-start: #0f1f18; 
+    --bg-gradient-end: #050505;
     --text-color: #e6eae3;
-    --accent-color: #FF7A1A;
     --card-bg: #192923;
-    --secondary-accent-color: #e3cdaf;
-    --shadow-color-dim: rgba(255, 122, 26, 0.6);
-    --shadow-color-bright: rgba(255, 122, 26, 0.8);
-    --frame: #FF7A1A;         /* frame tone */
-    --titlebar: #e6d1b2;      /* titlebar lighter */
-    --shadow-glow: rgba(255,122,26,0.18);
-    --inner-shadow: rgba(0,0,0,0.2);
-    --radius: 14px;
-    --gap: 28px;
-
-    --beige: rgba(0, 0, 0, 0.5);
-    --titlebar: #d4c4a8;
-    --frame: #c2b396;
+    
+    /* UI Accents */
+    --accent-orange: #FF7A1A;
+    --window-glass: rgba(0, 0, 0, 0.4);
+    --shadow-glow: rgba(255, 122, 26, 0.15);
+    
+    /* Layout Tokens */
     --radius: 12px;
     --gap: 40px;
-    --inner-shadow: rgba(0,0,0,0.4);
-    --shadow-glow: rgba(255,122,26,0.15);
-
-    --window-glass: rgba(0, 0, 0, 0.4);
 }
 
 * {
@@ -34,105 +23,64 @@
     font-family: 'Segoe UI', sans-serif;
 }
 
-html, body{
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-main{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-main > section {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;   /* Content starts at top of section */
-    align-items: flex-start;       /* Content left-aligned */
-    max-width: 85%;              /* Don’t stretch full width */
-    width: 90%;                    /* Make responsive on small screens */
-    padding: 0px;
-}
-
 body {
-    /* 'fixed' ensures the gradient stays put while you scroll */
     background: linear-gradient(to bottom, var(--bg-gradient-start), var(--bg-gradient-end)) fixed;
-    background-color: #0B1410;
     color: var(--text-color);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    line-height: 1.6;
 }
 
-.hero-links a:hover,
-.social-links a:hover {
-    text-decoration: underline;
+/* Header & Footer */
+.simple-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--card-bg);
 }
 
-/* Make the color stay the same for all states */
-.hero-links a:link,
-.hero-links a:visited,
-.hero-links a:active {
-    color: var(--accent-color);
-}
-
-h2 {
-    color: var(--accent-color);
-    margin-bottom: 1rem;
-}
-
-.contact a {
-    display: inline-block;
-    margin: 0.5rem;
-    color: var(--accent-color);
-    text-decoration: none;
-}
+.simple-header .logo img { height: 50px; }
 
 footer {
     text-align: center;
     padding: 2rem;
     background-color: var(--card-bg);
     font-size: 0.9rem;
+    margin-top: auto; /* Pushes footer to bottom */
 }
 
-.simple-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background-color: var(--card-bg); /* dark green */
-}
+/* Typography & Links */
+h2 { color: var(--accent-orange); margin-bottom: 1rem; }
 
-.simple-header .logo img {
-  height: 50px;
-}
+a { text-decoration: none; transition: 0.2s; }
 
+.hero-links a, .contact a { color: var(--accent-orange); }
+
+.hero-links a:hover, .social-links a:hover { text-decoration: underline; }
+
+/* Grid Container */
 .windows-grid {
     display: grid;
-    grid-template-columns: 1fr; /* Single column for screen-wide effect */
+    grid-template-columns: 1fr;
     gap: var(--gap);
     padding: 3rem 1.5rem;
-    width: 80%; /* Limits width so it stays cinematic on desktop */
+    width: 90%;
+    max-width: 1000px;
     margin: auto;
 }
 
+/* The HUD Window */
 .retro-window {
     display: flex;
     flex-direction: column;
-    text-decoration: none;
     color: inherit;
     border-radius: var(--radius);
-    
-    /* THE HUD LOOK: Orange outline and transparent center */
     border: 1.5px solid var(--accent-orange);
     background: var(--window-glass);
-    backdrop-filter: blur(4px); /* Optional: adds a nice frosted glass effect */
-    
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 15px rgba(255,122,26,0.1);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 15px var(--shadow-glow);
     transition: all 0.2s ease;
     aspect-ratio: 16 / 9; 
     overflow: hidden;
@@ -140,45 +88,36 @@ footer {
 
 .retro-window:hover {
     transform: translateY(-5px);
-    border-color: #ff9d54; /* Brighter orange on hover */
+    border-color: #ff9d54;
     box-shadow: 0 0 30px rgba(255,122,26,0.3);
 }
 
-/* We modify the titlebar to be more subtle to match the transparent look */
+/* Titlebar */
 .titlebar {
     display: flex;
     align-items: center;
     padding: 10px 16px;
-    background: rgba(255, 122, 26, 0.1); /* Very faint orange tint */
+    background: rgba(255, 122, 26, 0.1);
     border-bottom: 1px solid rgba(255, 122, 26, 0.2);
     flex-shrink: 0;
 }
 
-
 .title-left { display: flex; gap: 8px; align-items: center; }
 
-.win-btn {
-    width: 14px; height: 14px;
-    border-radius: 3px;
-    box-shadow: inset 0 -1px 0 rgba(0,0,0,0.15);
-}
+.win-btn { width: 14px; height: 14px; border-radius: 3px; }
 .win-min { background: #ffd36b; }
 .win-max { background: #8bd3ff; }
 .win-close { background: #ff7a1a; }
 
 .title-text {
     font-size: 0.9rem;
-    color: #2e2a24;
+    color: var(--text-color);
     font-weight: 700;
     margin-left: 10px;
     opacity: 0.8;
 }
-.win-icon {
-    width: 80px; /* Made icons larger for the bigger windows */
-    height: auto;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
-}
 
+/* Window Content */
 .window-content {
     flex: 1;
     display: flex;
@@ -190,7 +129,12 @@ footer {
     text-align: center;
 }
 
-/* Make text light so it's readable on the dark transparent background */
+.win-icon {
+    width: 80px;
+    height: auto;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+}
+
 .win-label {
     font-size: 1.8rem;
     color: var(--accent-orange);
@@ -202,4 +146,5 @@ footer {
 .win-description {
     color: rgba(255,255,255,0.7);
     font-size: 1rem;
+    max-width: 80%;
 }
