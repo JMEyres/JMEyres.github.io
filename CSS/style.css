@@ -78,7 +78,7 @@ a { text-decoration: none; transition: 0.2s; }
     color: inherit;
     border-radius: var(--radius);
     border: 1.5px solid var(--accent-orange);
-    background: var(--window-glass);
+    /*background: var(--window-glass);*/
     backdrop-filter: blur(4px);
     box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 15px var(--shadow-glow);
     transition: all 0.2s ease;
@@ -127,12 +127,21 @@ a { text-decoration: none; transition: 0.2s; }
     gap: 15px;
     padding: 2rem;
     text-align: center;
-}
 
-.win-icon {
-    width: 80px;
-    height: auto;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+    background-image: var(--window-bg);
+    
+    /* 2. Ensure the image covers the area properly */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* 3. The "Glass" Layer */
+    /* Ensure your --window-glass variable has transparency, 
+       for example: rgba(20, 20, 20, 0.6) */
+    background-color: var(--window-glass); 
+    
+    /* This blends the background color and the image */
+    background-blend-mode: overlay;
 }
 
 .win-label {
