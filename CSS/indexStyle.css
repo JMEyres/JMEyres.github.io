@@ -8,6 +8,22 @@
     --secondary-accent-color: #e3cdaf;
     --shadow-color-dim: rgba(255, 122, 26, 0.6);
     --shadow-color-bright: rgba(255, 122, 26, 0.8);
+    
+    /* UI Accents */
+    --accent-orange: #FF7A1A;
+    --window-glass: rgba(0, 0, 0, 0.4);
+    --shadow-glow: rgba(255, 122, 26, 0.15);
+    
+    /* Layout Tokens */
+    --radius: 12px;
+    --gap: 40px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
 }
 
 /* General page styles */
@@ -220,6 +236,104 @@ footer {
     opacity: 1;
     transform: translateY(0);
   }
+
+/* Grid Container */
+.windows-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap);
+    padding: 3rem 1.5rem;
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* The HUD Window */
+.retro-window {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    color: inherit;
+    border-radius: var(--radius);
+    border: 1.5px solid var(--accent-orange);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 15px var(--shadow-glow);
+    transition: all 0.2s ease;
+    aspect-ratio: 16 / 9; 
+    overflow: hidden;
+}
+
+.retro-window:hover {
+    transform: translateY(-5px);
+    border-color: #ff9d54;
+    box-shadow: 0 0 30px rgba(255,122,26,0.3);
+}
+
+/* Titlebar */
+.titlebar {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    background: rgba(255, 122, 26, 0.1);
+    border-bottom: 1px solid rgba(255, 122, 26, 0.2);
+    flex-shrink: 0;
+}
+
+.title-left { display: flex; gap: 8px; align-items: center; }
+
+.win-btn { width: 14px; height: 14px; border-radius: 3px; }
+.win-min { background: #ffd36b; }
+.win-max { background: #8bd3ff; }
+.win-close { background: #ff7a1a; }
+
+.title-text {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    font-weight: 700;
+    margin-left: 10px;
+    opacity: 0.8;
+}
+
+/* Window Content */
+.window-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 2rem;
+    text-align: center;
+
+    background-image: var(--window-bg);
+    
+    /* 2. Ensure the image covers the area properly */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* 3. The "Glass" Layer */
+    /* Ensure your --window-glass variable has transparency, 
+       for example: rgba(20, 20, 20, 0.6) */
+    background-color: var(--window-glass); 
+    
+    /* This blends the background color and the image */
+    background-blend-mode: overlay;
+}
+
+.win-label {
+    font-size: 1.8rem;
+    color: var(--accent-orange);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.win-description {
+    color: rgba(255,255,255,0.7);
+    font-size: 1rem;
+    max-width: 80%;
+}
 
 /* -------------------- Media Queries for Mobile -------------------- */
 @media (max-width: 768px) {
