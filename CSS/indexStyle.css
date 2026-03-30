@@ -256,17 +256,20 @@ footer {
     color: inherit;
     border-radius: var(--radius);
     border: 1.5px solid var(--accent-orange);
-    backdrop-filter: blur(4px);
     box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 15px var(--shadow-glow);
     transition: all 0.2s ease;
     aspect-ratio: 16 / 9; 
     overflow: hidden;
 }
 
-.retro-window:hover {
+.retro-window:hover{
     transform: translateY(-5px);
     border-color: #ff9d54;
     box-shadow: 0 0 30px rgba(255,122,26,0.3);
+}
+
+.retro-window:hover .window-content::before{
+    filter: none;
 }
 
 /* Titlebar */
@@ -294,6 +297,19 @@ footer {
     opacity: 0.8;
 }
 
+.window-content::before
+{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: var(--window-bg);
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    filter: blur(2px);
+}
+
 /* Window Content */
 .window-content {
     flex: 1;
@@ -304,20 +320,8 @@ footer {
     gap: 15px;
     padding: 2rem;
     text-align: center;
-
-    background-image: var(--window-bg);
-    
-    /* 2. Ensure the image covers the area properly */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    /* 3. The "Glass" Layer */
-    /* Ensure your --window-glass variable has transparency, 
-       for example: rgba(20, 20, 20, 0.6) */
+    position: relative;
     background-color: var(--window-glass); 
-    
-    /* This blends the background color and the image */
     background-blend-mode: overlay;
 }
 
@@ -327,6 +331,7 @@ footer {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
+    z-index: +1;
 }
 
 .win-description {
