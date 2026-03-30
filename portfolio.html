@@ -25,41 +25,27 @@
   </header>
 
   <!-- Page content -->
-  <main>
-    <h1>Page Title</h1>
-    <p>Page content goes here...</p>
+<main class="explorer-layout">
+  <aside class="project-directory">
+    <div class="directory-header">C:\PROJECTS\A-Z</div>
+    <div class="search-box">
+      <input type="text" id="project-search" placeholder="Search directory..." autocomplete="off">
+    </div>
+    <ul id="project-list" class="file-list">
+      </ul>
+  </aside>
 
-    <div class="windows-grid">
-      <a href="#" class="retro-window" style="--window-bg: url('../Images/LNDScreenshot.png')">
-        <div class="titlebar">
-          <div class="title-left">
-            <span class="win-btn win-min"></span>
-            <span class="win-btn win-max"></span>
-            <span class="win-btn win-close"></span>
-            <span class="title-text">Project_Alpha.exe</span>
-          </div>
-        </div>
-        <div class="window-content">
-          <span class="win-label">Featured Project Name</span>
-          <p class="win-description">A brief catchphrase or description of the work.</p>
-        </div>
-      </a>
-
-      <a href="#" class="retro-window">
-        <div class="titlebar">
-          <div class="title-left">
-            <span class="win-btn win-min"></span>
-            <span class="win-btn win-max"></span>
-            <span class="win-btn win-close"></span>
-            <span class="title-text">Project_Beta.exe</span>
-          </div>
-        </div>
-        <div class="window-content">
-          <img src="your-project-icon.png" class="win-icon" alt="Icon">
-          <span class="win-label">Second Project Highlight</span>
-          <p class="win-description">Click to explore the full case study.</p>
-        </div>
-      </a>
+  <section class="project-view">
+    <div class="retro-window" id="window-container">
+      <div class="titlebar">
+        <span class="title-text" id="proj-title">System Idle...</span>
+      </div>
+      <div class="window-content">
+        <img src="" id="proj-icon" class="win-icon" alt="">
+        <h1 id="proj-header">Select a File</h1>
+        <p id="proj-desc">Initialize a project from the directory to view data.</p>
+        <div id="tag-list" class="tag-container"></div>
+      </div>
     </div>
   </section>
 </main>
@@ -69,3 +55,49 @@
   </footer>
 </body>
 </html>
+
+<script src="projects.js"></script>
+
+<script>
+  const listContainer = document.getElementById('project-list');
+  const searchInput = document.getElementById('project-search');
+
+searchInput.addEventListener('input', (e) => {
+    const term = e.target.value.toLowerCase();
+    const items = listContainer.getElementsByTagName('li');
+
+    Array.from(items).forEach(item => {
+        const title = item.textContent.toLowerCase();
+        if (title.indexOf(term) !== -1) {
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+});
+
+// Loop through every project in your data
+Object.keys(projects).forEach(key => {
+  const listItem = document.createElement('li');
+  const project = projects[key];
+  
+  // Create a link that updates the page without reloading
+  listItem.innerHTML = `<a href="?id=${key}" class="sidebar-link">${project.title}</a>`;
+  listContainer.appendChild(listItem);
+});
+  // 1. Get the ID from the URL (e.g., project.html?id=alpha)
+  const params = new URLSearchParams(window.location.search);
+  const projectId = params.get('id');
+
+  // 2. Look up the project in our data.js object
+  const data = projects[projectId];
+
+  if (data) {
+    // 3. Inject the data into the HTML
+    document.getElementById('proj-title').innerText = data.title;
+    document.getElementById('proj-header').innerText = data.title;
+    document.getElementById('proj-desc').innerText = data.description;
+    document.getElementById('proj-icon').src = data.icon;
+    document.getElementById('window-container').style.setProperty('--window-bg', data.bg);
+  }
+</script>
