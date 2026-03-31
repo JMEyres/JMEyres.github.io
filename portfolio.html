@@ -80,19 +80,26 @@ function loadProject(id) {
     const data = projects[id];
     if (!data) return;
 
-    // Update Text
+    const projImg = document.getElementById('proj-img');
+
+    // 1. Hide the image slightly so the "swap" is invisible
+    projImg.style.opacity = "0";
+
+    // 2. Set the new data
     document.getElementById('proj-title').innerText = data.title;
     document.getElementById('proj-header').innerText = data.title;
     document.getElementById('proj-desc').innerText = data.description;
-    
-    // Update Images
-    // Ensure projects.js has 'icon' and 'imgPath' keys!
-    document.getElementById('proj-icon').src = data.icon || '';
-    const projectImage = document.getElementById('proj-img');
-    projectImage.src = data.imgPath; 
-    projectImage.style.display = "block"; // Make sure it's visible
+    document.getElementById('proj-icon').src = data.icon;
 
-    // Update the URL without refreshing
+    // 3. Wait for the image to actually LOAD before showing it
+    projImg.onload = function() {
+        projImg.style.opacity = "1";
+    };
+    
+    projImg.src = data.imgPath;
+
+    // Update background variable
+    document.getElementById('window-container').style.setProperty('--window-bg', `url('${data.imgPath}')`);
     window.history.pushState(null, '', `?id=${id}`);
 }
 
