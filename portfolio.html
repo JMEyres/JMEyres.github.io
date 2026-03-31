@@ -44,6 +44,7 @@
         <img src="" id="proj-icon" class="win-icon" alt="">
         <h1 id="proj-header">Select a File</h1>
         <p id="proj-desc">Initialize a project from the directory to view data.</p>
+        <img src="" id="proj-img">
         <div id="tag-list" class="tag-container"></div>
       </div>
     </div>
@@ -60,44 +61,67 @@
 
 <script>
   const listContainer = document.getElementById('project-list');
-  const searchInput = document.getElementById('project-search');
+const searchInput = document.getElementById('project-search');
 
+// --- 1. SEARCH LOGIC ---
 searchInput.addEventListener('input', (e) => {
     const term = e.target.value.toLowerCase();
     const items = listContainer.getElementsByTagName('li');
 
     Array.from(items).forEach(item => {
+        // We look at the link text inside the li
         const title = item.textContent.toLowerCase();
-        if (title.indexOf(term) !== -1) {
-            item.style.display = 'block';
-        } else {
-            item.style.display = 'none';
-        }
+        item.style.display = title.includes(term) ? 'block' : 'none';
     });
 });
 
-// Loop through every project in your data
-Object.keys(projects).forEach(key => {
-  const listItem = document.createElement('li');
-  const project = projects[key];
-  
-  // Create a link that updates the page without reloading
-  listItem.innerHTML = `<a href="?id=${key}" class="sidebar-link">${project.title}</a>`;
-  listContainer.appendChild(listItem);
-});
-  // 1. Get the ID from the URL (e.g., project.html?id=alpha)
-  const params = new URLSearchParams(window.location.search);
-  const projectId = params.get('id');
+// --- 2. UPDATE UI FUNCTION ---
+function loadProject(id) {
+    const data = projects[id];
+    if (!data) return;
 
-  // 2. Look up the project in our data.js object
-  const data = projects[projectId];
-
-  if (data) {
-    // 3. Inject the data into the HTML
+    // Update Text
     document.getElementById('proj-title').innerText = data.title;
     document.getElementById('proj-header').innerText = data.title;
     document.getElementById('proj-desc').innerText = data.description;
-    document.getElementById('proj-icon').src = data.icon;
-    document.getElementById('window-container').style.setProperty('--window-bg', data.bg);
-  }
+    
+    // Update Images
+    // Ensure projects.js has 'icon' and 'imgPath' keys!
+    document.getElementById('proj-icon').src = data.icon || '';
+    const projectImage = document.getElementById('proj-img');
+    projectImage.src = data.imgPath; 
+    projectImage.style.display = "block"; // Make sure it's visible
+
+    // Update the URL without refreshing
+    window.history.pushState(null, '', `?id=${id}`);
+}
+
+// --- 3. BUILD DIRECTORY ---
+Object.keys(projects).forEach(key => {
+    const listItem = document.createElement('li');
+    const project = projects[key];
+    
+    const link = document.createElement('a');
+    link.href = `?id=${key}`;
+    link.className = "sidebar-link";
+    link.innerText = project.title;
+
+    // Intercept clicks to prevent page flicker/reload
+    link.addEventListener('click', (e) => {
+        e.preventDefault(); 
+        loadProject(key);
+    });
+
+    listItem.appendChild(link);
+    listContainer.appendChild(listItem);
+});
+
+// --- 4. INITIAL LOAD ---
+window.onload = () => {
+    const params = new URLSearchParams(window.location.search);
+    const initialId = params.get('id');
+    if (initialId && projects[initialId]) {
+        loadProject(initialId);
+    }
+};
 </script>

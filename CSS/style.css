@@ -23,12 +23,18 @@
     font-family: 'Segoe UI', sans-serif;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden; /* This kills the outer scrollbar */
+    display: flex;
+    flex-direction: column;
+}
+
 body {
     background: linear-gradient(to bottom, var(--bg-gradient-start), var(--bg-gradient-end)) fixed;
     color: var(--text-color);
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
     line-height: 1.6;
 }
 
@@ -53,10 +59,11 @@ body {
 
 footer {
     text-align: center;
-    padding: 2rem;
+    padding: 1rem;
     background-color: var(--card-bg);
     font-size: 0.9rem;
-    margin-top: auto; /* Pushes footer to bottom */
+    flex-shrink: 0; /* Prevents them from being squished or moved */
+
 }
 
 /* Typography & Links */
@@ -87,7 +94,10 @@ a { text-decoration: none; transition: 0.2s; }
     display: flex;
     gap: 20px;
     padding: 20px;
-    height: 80vh; /* Keeps it within the viewport */
+    flex: 1;          /* This tells it to take up all available middle space */
+    min-height: 0;    /* CRITICAL: Allows flex children to be smaller than their content */
+    box-sizing: border-box;
+    overflow: hidden; /* Keeps the container itself from growing */
 }
 
 .project-directory {
@@ -96,6 +106,32 @@ a { text-decoration: none; transition: 0.2s; }
     background: rgba(0, 0, 0, 0.3);
     overflow-y: auto; /* Adds a scrollbar if the list gets long */
     padding: 10px;
+    min-height: 0;
+}
+
+.project-view {
+    flex: 1;
+    overflow-y: auto; 
+    min-height: 0;
+    padding-right: 10px; /* Space for the scrollbar */
+}
+
+.project-view::-webkit-scrollbar {
+    width: 6px;
+}
+
+.project-view::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.project-view::-webkit-scrollbar-thumb {
+    background: var(--accent-orange);
+    border-radius: 4px;
+}
+
+.project-view::-webkit-scrollbar-thumb:hover {
+    background: #ff9d54; /* Brighter orange on hover */
+    box-shadow: 0 0 15px rgba(255, 122, 26, 0.6);
 }
 
 .file-list {
@@ -150,4 +186,14 @@ a { text-decoration: none; transition: 0.2s; }
 #project-search:focus {
     box-shadow: 0 0 10px rgba(255, 122, 26, 0.5);
     background: rgba(255, 122, 26, 0.1);
+}
+
+#proj-img {
+    display: block;
+    max-width: 100%;    /* Never wider than the window */
+    height: auto;        /* Maintain aspect ratio */
+    margin-top: 20px;
+    margin-bottom: 20px; /* Ensures space below the image */
+    border: 1px solid var(--accent-orange);
+    flex-shrink: 0; /* Prevents the image from being squished */
 }
