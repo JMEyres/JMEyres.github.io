@@ -197,3 +197,33 @@ a { text-decoration: none; transition: 0.2s; }
     border: 1px solid var(--accent-orange);
     flex-shrink: 0; /* Prevents the image from being squished */
 }
+
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+    padding-bottom: 60px; /* Space for the footer */
+}
+
+.gallery-thumb {
+    /* 1. Create the fixed "Frame" */
+    width: calc(33.33% - 10px); 
+    height: 200px; /* Force every box to be the same height */
+    background: rgba(0, 0, 0, 0.3); /* Dark background for empty space */
+    border: 1px solid var(--accent-orange);
+
+    cursor: pointer;
+    
+    /* 2. Protect the Image Aspect Ratio */
+    object-fit: contain; /* This is the "Magic" property */
+    padding: 10px; /* Optional: adds a little space inside the frame */
+    
+    transition: all 0.3s ease;
+}
+
+.gallery-thumb:hover {
+    background: rgba(255, 122, 26, 0.1);
+    transform: scale(1.02);
+    box-shadow: 0 0 15px var(--shadow-glow);
+}

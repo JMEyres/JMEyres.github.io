@@ -40,12 +40,14 @@
       <div class="titlebar">
         <span class="title-text" id="proj-title">System Idle...</span>
       </div>
-      <div class="window-content">
-        <img src="" id="proj-icon" class="win-icon" alt="">
-        <h1 id="proj-header">Select a File</h1>
-        <p id="proj-desc">Initialize a project from the directory to view data.</p>
-        <img src="" id="proj-img">
-        <div id="tag-list" class="tag-container"></div>
+      <div class="window-content" id="window-content-main"> <img src="" id="proj-icon" class="win-icon" alt="">
+          <h1 id="proj-header">Select a File</h1>
+          <p id="proj-desc">Initialize a project from the directory to view data.</p>
+          <img src="" id="proj-img">
+          
+          <div id="gallery-area" class="gallery-container"></div> 
+          
+          <div id="tag-list" class="tag-container"></div>
       </div>
     </div>
   </section>
@@ -76,31 +78,52 @@ searchInput.addEventListener('input', (e) => {
 });
 
 // --- 2. UPDATE UI FUNCTION ---
-function loadProject(id) {
+
+  function loadProject(id) {
     const data = projects[id];
     if (!data) return;
 
-    const projImg = document.getElementById('proj-img');
+    const mainImg = document.getElementById('proj-img');
+    const galleryArea = document.getElementById('gallery-area');
 
-    // 1. Hide the image slightly so the "swap" is invisible
-    projImg.style.opacity = "0";
-
-    // 2. Set the new data
+    // --- 1. Handle Main Data ---
     document.getElementById('proj-title').innerText = data.title;
     document.getElementById('proj-header').innerText = data.title;
     document.getElementById('proj-desc').innerText = data.description;
-    document.getElementById('proj-icon').src = data.icon;
+    document.getElementById('proj-icon').src = data.icon || '';
 
-    // 3. Wait for the image to actually LOAD before showing it
-    projImg.onload = function() {
-        projImg.style.opacity = "1";
-    };
-    
-    projImg.src = data.imgPath;
+    // --- 2. Handle the Main Image ---
+    if (data.imgPath) {
+        mainImg.src = data.imgPath;
+        mainImg.style.display = "block";
+        mainImg.style.opacity = "0"; // Start hidden for fade-in
+        
+        mainImg.onload = function() {
+            mainImg.style.opacity = "1";
+        };
 
-    // Update background variable
-    document.getElementById('window-container').style.setProperty('--window-bg', `url('${data.imgPath}')`);
-    window.history.pushState(null, '', `?id=${id}`);
+        // Update the CSS Background variable for the glass effect
+        document.getElementById('window-container').style.setProperty('--window-bg', `url('${data.imgPath}')`);
+    } else {
+        mainImg.style.display = "none";
+        document.getElementById('window-container').style.setProperty('--window-bg', 'none');
+    }
+
+    // --- 3. Handle Gallery Images ---
+    galleryArea.innerHTML = ''; // Clear old gallery
+
+    if (data.gallery && data.gallery.length > 0) {
+        data.gallery.forEach(src => {
+            const extraImg = document.createElement('img');
+            extraImg.src = src;
+            extraImg.className = "gallery-thumb";
+            extraImg.onclick = () => window.open(src, '_blank');
+            galleryArea.appendChild(extraImg); // Append to the new gallery-area div
+        });
+    }
+
+  // --- 4. Update URL ---
+  window.history.pushState(null, '', `?id=${id}`);
 }
 
 // --- 3. BUILD DIRECTORY ---
@@ -111,7 +134,7 @@ Object.keys(projects).forEach(key => {
     const link = document.createElement('a');
     link.href = `?id=${key}`;
     link.className = "sidebar-link";
-    link.innerText = project.title;
+    link.innerText = project.dirTitle;
 
     // Intercept clicks to prevent page flicker/reload
     link.addEventListener('click', (e) => {
