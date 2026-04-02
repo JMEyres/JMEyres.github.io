@@ -23,6 +23,10 @@
     font-family: 'Segoe UI', sans-serif;
 }
 
+.hidden {
+    display: none;
+}
+
 html, body {
     height: 100%;
     margin: 0;
@@ -212,8 +216,6 @@ a { text-decoration: none; transition: 0.2s; }
     height: 200px; /* Force every box to be the same height */
     background: rgba(0, 0, 0, 0.3); /* Dark background for empty space */
     border: 1px solid var(--accent-orange);
-
-    cursor: pointer;
     
     /* 2. Protect the Image Aspect Ratio */
     object-fit: contain; /* This is the "Magic" property */
@@ -223,7 +225,8 @@ a { text-decoration: none; transition: 0.2s; }
 }
 
 .gallery-thumb:hover {
-    background: rgba(255, 122, 26, 0.1);
-    transform: scale(1.02);
-    box-shadow: 0 0 15px var(--shadow-glow);
+    cursor: pointer;
+    filter: brightness(1.2);
+    border-color: #fff; /* Turns the orange border white on hover */
+    box-shadow: 0 0 10px var(--accent-orange);
 }

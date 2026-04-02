@@ -45,6 +45,7 @@
           <p id="proj-desc">Initialize a project from the directory to view data.</p>
           <img src="" id="proj-img">
           
+          <h1 id="gallery-header">Gallery:</h1>
           <div id="gallery-area" class="gallery-container"></div> 
           
           <div id="tag-list" class="tag-container"></div>
@@ -62,7 +63,7 @@
 <script src="projects.js"></script>
 
 <script>
-  const listContainer = document.getElementById('project-list');
+const listContainer = document.getElementById('project-list');
 const searchInput = document.getElementById('project-search');
 
 // --- 1. SEARCH LOGIC ---
@@ -79,48 +80,53 @@ searchInput.addEventListener('input', (e) => {
 
 // --- 2. UPDATE UI FUNCTION ---
 
-  function loadProject(id) {
-    const data = projects[id];
-    if (!data) return;
+function loadProject(id) {
+  const data = projects[id];
+  if (!data) return;
 
-    const mainImg = document.getElementById('proj-img');
-    const galleryArea = document.getElementById('gallery-area');
+  const mainImg = document.getElementById('proj-img');
+  const galleryArea = document.getElementById('gallery-area');
+  const galleryHeader = document.getElementById('gallery-header');
 
-    // --- 1. Handle Main Data ---
-    document.getElementById('proj-title').innerText = data.title;
-    document.getElementById('proj-header').innerText = data.title;
-    document.getElementById('proj-desc').innerText = data.description;
-    document.getElementById('proj-icon').src = data.icon || '';
+  // --- 1. Handle Main Data ---
+  document.getElementById('proj-title').innerText = data.title;
+  document.getElementById('proj-header').innerText = data.title;
+  document.getElementById('proj-desc').innerText = data.description;
+  document.getElementById('proj-icon').src = data.icon || '';
 
-    // --- 2. Handle the Main Image ---
-    if (data.imgPath) {
-        mainImg.src = data.imgPath;
-        mainImg.style.display = "block";
-        mainImg.style.opacity = "0"; // Start hidden for fade-in
-        
-        mainImg.onload = function() {
-            mainImg.style.opacity = "1";
-        };
+  // --- 2. Handle the Main Image ---
+  if (data.imgPath) {
+      mainImg.src = data.imgPath;
+      mainImg.style.display = "block";
+      mainImg.style.opacity = "0"; // Start hidden for fade-in
+      
+      mainImg.onload = function() {
+          mainImg.style.opacity = "1";
+      };
 
-        // Update the CSS Background variable for the glass effect
-        document.getElementById('window-container').style.setProperty('--window-bg', `url('${data.imgPath}')`);
-    } else {
-        mainImg.style.display = "none";
-        document.getElementById('window-container').style.setProperty('--window-bg', 'none');
-    }
+      // Update the CSS Background variable for the glass effect
+      document.getElementById('window-container').style.setProperty('--window-bg', `url('${data.imgPath}')`);
+  } else {
+      mainImg.style.display = "none";
+      document.getElementById('window-container').style.setProperty('--window-bg', 'none');
+  }
 
-    // --- 3. Handle Gallery Images ---
-    galleryArea.innerHTML = ''; // Clear old gallery
+  // --- 3. Handle Gallery Images ---
+  galleryArea.innerHTML = ''; // Clear old gallery
 
-    if (data.gallery && data.gallery.length > 0) {
-        data.gallery.forEach(src => {
-            const extraImg = document.createElement('img');
-            extraImg.src = src;
-            extraImg.className = "gallery-thumb";
-            extraImg.onclick = () => window.open(src, '_blank');
-            galleryArea.appendChild(extraImg); // Append to the new gallery-area div
-        });
-    }
+  if (data.gallery && data.gallery.length > 0) {
+    galleryHeader.classList.remove('hidden');
+    data.gallery.forEach(src => {
+        const extraImg = document.createElement('img');
+        extraImg.src = src;
+        extraImg.className = "gallery-thumb";
+        extraImg.onclick = () => window.open(src, '_blank');
+        galleryArea.appendChild(extraImg); // Append to the new gallery-area div
+    });
+  }
+  else{
+    galleryHeader.classList.add('hidden');
+  }
 
   // --- 4. Update URL ---
   window.history.pushState(null, '', `?id=${id}`);
