@@ -210,23 +210,37 @@ a { text-decoration: none; transition: 0.2s; }
     padding-bottom: 60px; /* Space for the footer */
 }
 
+.gallery-item {
+    width: calc(33.33% - 10px); /* Matches your previous grid */
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
 .gallery-thumb {
-    /* 1. Create the fixed "Frame" */
-    width: calc(33.33% - 10px); 
-    height: 200px; /* Force every box to be the same height */
-    background: rgba(0, 0, 0, 0.3); /* Dark background for empty space */
+    width: 100%; /* Fill the container */
+    height: 200px;
+    object-fit: contain;
     border: 1px solid var(--accent-orange);
-    
-    /* 2. Protect the Image Aspect Ratio */
-    object-fit: contain; /* This is the "Magic" property */
-    padding: 10px; /* Optional: adds a little space inside the frame */
-    
+    background: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.gallery-thumb:hover {
-    cursor: pointer;
-    filter: brightness(1.2);
-    border-color: #fff; /* Turns the orange border white on hover */
+.gallery-caption {
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--accent-orange);
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Keeps long filenames tidy */
+    white-space: nowrap;
+    width: 100%;
+}
+
+.gallery-item:hover .gallery-thumb {
+    border-color: #fff;
     box-shadow: 0 0 10px var(--accent-orange);
 }

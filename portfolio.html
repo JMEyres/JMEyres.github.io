@@ -117,11 +117,26 @@ function loadProject(id) {
   if (data.gallery && data.gallery.length > 0) {
     galleryHeader.classList.remove('hidden');
     data.gallery.forEach(src => {
-        const extraImg = document.createElement('img');
-        extraImg.src = src;
-        extraImg.className = "gallery-thumb";
-        extraImg.onclick = () => window.open(src, '_blank');
-        galleryArea.appendChild(extraImg); // Append to the new gallery-area div
+      // 1. Create a wrapper 'figure' to hold img + caption
+      const figure = document.createElement('figure');
+      figure.className = "gallery-item";
+
+      // 2. Create the Image
+      const extraImg = document.createElement('img');
+      extraImg.src = src;
+      extraImg.className = "gallery-thumb";
+      extraImg.onclick = () => window.open(src, '_blank');
+
+      // 3. Create the Caption (Cleaning up the file name)
+      const caption = document.createElement('figcaption');
+      const fileName = src.split('/').pop().split('.')[0]; // Gets 'alpha-bg' from 'Images/alpha-bg.jpg'
+      caption.innerText = fileName.replace(/-/g, ' ').toUpperCase(); // 'ALPHA BG'
+      caption.className = "gallery-caption";
+
+      // 4. Assemble and add to gallery
+      figure.appendChild(extraImg);
+      figure.appendChild(caption);
+      galleryArea.appendChild(figure);
     });
   }
   else{
