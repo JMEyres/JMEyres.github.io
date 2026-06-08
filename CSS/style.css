@@ -244,3 +244,87 @@ a { text-decoration: none; transition: 0.2s; }
     border-color: #fff;
     box-shadow: 0 0 10px var(--accent-orange);
 }
+
+/* Contact Section Layout */
+.contact-container {
+    max-width: 600px;
+    margin: 20px 0;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border-left: 2px solid var(--accent-orange);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Terminal-style Labels */
+.form-group label {
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: var(--accent-orange);
+    letter-spacing: 0.1em;
+}
+
+/* Matching inputs to your existing project-search styling */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--accent-orange);
+    color: var(--text-color);
+    padding: 10px;
+    font-family: monospace;
+    font-size: 0.9rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical; /* Allows resizing up and down, but not tearing layout sideways */
+}
+
+/* Placeholders matching your search box theme */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(255, 122, 26, 0.4);
+}
+
+/* Interactive Focus Glows */
+.form-group input:focus,
+.form-group textarea:focus {
+    box-shadow: 0 0 12px rgba(255, 122, 26, 0.4);
+    background: rgba(255, 122, 26, 0.05);
+    border-color: #fff;
+}
+
+/* Interactive Button matching your file-link style but chunky */
+.form-submit-btn {
+    align-self: flex-start; /* Keeps it from stretching across the screen */
+    background: transparent;
+    border: 1px solid var(--accent-orange);
+    color: var(--accent-orange);
+    padding: 10px 24px;
+    font-family: monospace;
+    font-weight: bold;
+    cursor: pointer;
+    letter-spacing: 0.15em;
+    transition: all 0.3s ease;
+}
+
+.form-submit-btn:hover {
+    background: var(--accent-orange);
+    color: #000;
+    box-shadow: 0 0 15px var(--accent-orange);
+    font-weight: 900;
+}
