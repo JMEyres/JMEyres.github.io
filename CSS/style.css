@@ -328,3 +328,83 @@ a { text-decoration: none; transition: 0.2s; }
     box-shadow: 0 0 15px var(--accent-orange);
     font-weight: 900;
 }
+
+.project-dossier {
+    display: flex;
+    gap: var(--gap);
+    margin-top: 20px;
+}
+
+.dossier-sidebar {
+    flex: 1;
+    max-width: 30%;
+    border-right: 1px solid rgba(255, 122, 26, 0.2);
+    padding-right: 20px;
+}
+
+.dossier-content {
+    flex: 2;
+}
+
+/* Responsive adjustment for small screens */
+@media (max-width: 768px) {
+    .project-dossier {
+        flex-direction: column;
+    }
+    .dossier-sidebar {
+        max-width: 100%;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 122, 26, 0.2);
+        padding-right: 0;
+        padding-bottom: 20px;
+    }
+}
+
+.project-view {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; 
+    min-height: 0;
+    min-width: 0;          /* CRITICAL: Stops content inside from stretching the view horizontally */
+    padding-right: 10px;
+}
+
+.project-dossier {
+    display: flex;
+    gap: var(--gap);
+    margin-top: 20px;
+    width: 100%;           /* Explicitly forces it to stay within parent bounds */
+    min-width: 0;          /* CRITICAL: Prevents columns from expanding past the screen width */
+}
+
+.project-hero {
+    width: 100%;           /* 1. Fluidly fills 100% of the screen on mobile/tablets */
+    max-width: 850px;      /* 2. Caps the size on desktop so it doesn't blow up out of proportion */
+    margin: 0 auto 20px auto; /* 3. Centers the box horizontally when it hits its max-width cap */
+    
+    border: 1px solid var(--accent-orange);
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 15px rgba(255, 122, 26, 0.1);
+    flex-shrink: 0;        
+}
+
+/* Modern aspect-ratio scaling wrapper */
+.video-responsive-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-height: 450px;     /* Keeps the internal wrapper matched to the hero box */
+    aspect-ratio: 16 / 9;  /* Modern CSS trick to lock the widescreen format */
+    overflow: hidden;
+}
+
+/* Forcing the iframe to stretch seamlessly to the wrapper boundaries */
+.video-responsive-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}

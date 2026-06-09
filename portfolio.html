@@ -65,6 +65,7 @@
 <script>
 const listContainer = document.getElementById('project-list');
 const searchInput = document.getElementById('project-search');
+document.getElementById('gallery-header').classList.add('hidden');
 
 // --- 1. SEARCH LOGIC ---
 searchInput.addEventListener('input', (e) => {
@@ -72,7 +73,6 @@ searchInput.addEventListener('input', (e) => {
     const items = listContainer.getElementsByTagName('li');
 
     Array.from(items).forEach(item => {
-        // We look at the link text inside the li
         const title = item.textContent.toLowerCase();
         item.style.display = title.includes(term) ? 'block' : 'none';
     });
