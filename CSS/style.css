@@ -408,3 +408,8 @@ a { text-decoration: none; transition: 0.2s; }
     height: 100%;
     border: none;
 }
+
+.project-image{
+    width: 100%;
+    max-width: 850px;
+}
