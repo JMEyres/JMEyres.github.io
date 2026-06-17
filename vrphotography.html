@@ -59,7 +59,6 @@
                 <h3>// DEPLOYMENT</h3>
                 <ul class="spec-list">
                     <li><a href="https://github.com/JMEyres/VRPhotography_Public" class="file-link">> ACCESS_SOURCE_CODE</a></li>
-                    <li><a href="#" class="file-link">> LAUNCH_BUILD</a></li>
                 </ul>
             </div>
             
@@ -67,9 +66,16 @@
                 <h3>01 // PROJECT_ABSTRACT</h3>
                 <p>Traditional photography modes within gaming environments are passive and often an afterthought lacking any sort of educational context or teaching, simply providing the tools to create photos. This project aimed to tackle that limitation by creating a VR environment that mirrors the mechanics of operating a real DSLR and coupling that with an AI assessment pipeline to generate actionable feedback for the user to improve their next photo. The user study performed suggests this tool would be effective should it be taken from the prototype phase to the full application.</p>
 
+                <br>
+
                 <h3>02 // ARCHITECTURE_DETAILED</h3>
                 <p>There is a three phase structure to this project, the unity environment the user interacts with, The flask server that acts as a bridge, and the python backend which serves as the computational stage for photo assessment.</p>
-                <img src="/Images/LNDScreenshot.png" class="project-image">
+                <img src="/Images/TechnicalMap.png" class="project-image">
+                <h4>Unity Environment</h4>
+                <p>The unity environment for this prototype aimed to mirror the process of taking a photo using a DSLR in real-life as closely as possible. The focus was on the functionality of the camera over the environments themselves, </p>
+                <h4>Python Backend</h4>
+                <p>The python backend was split into 3 main stages: NIMA image assessment, Mathematically calculated metrics and MLLM generated feedback using llama vision 3.2.</p>
+                <br>
 
                 <h3>03 // HURDLES_RESOLVED</h3>
                 <p>The technical challenges faced during development and the engineering solutions implemented...</p>
