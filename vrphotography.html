@@ -72,7 +72,12 @@
                 <p>There is a three phase structure to this project, the unity environment the user interacts with, The flask server that acts as a bridge, and the python backend which serves as the computational stage for photo assessment.</p>
                 <img src="/Images/TechnicalMap.png" class="project-image">
                 <h4>Unity Environment</h4>
-                <p>The unity environment for this prototype aimed to mirror the process of taking a photo using a DSLR in real-life as closely as possible. The focus was on the functionality of the camera over the environments themselves, </p>
+                <p>
+                  The unity environment for this prototype aimed to mirror the process of taking a photo using a DSLR in real-life as closely as possible. The focus was on the functionality of the camera over the environments themselves. Due to this fact i made use of low poly environments, specifically demo environments from asset packs i had previously purchased, for two main reasons: First, i could source a lot of environments quickly which due to the short time frame for this project was essential (3 months all inclusive planning -> finish). Secondly, they are far more performant which is necessary due to limited computational budget from running multiple AI models and VR alongside the unity application. 
+                  <br>
+                  <br>
+                  To make the camera feel as close to the real thing as possible i focused the interaction with it, making the zoom and manual focus be twisting rings on the lens, or navigating settings menus using the joystick on the quest controller to mimic the older style of DSLR over a touch screen which was something that was tested and ultimately felt too clunky and frustrating. I also added the beeps and shutter sounds you would hear from a real camera, and added auto focus alongside, ISO, shutter speed and aperture settings that were chosen due to being the most critical aspects to get ready with for prototype.
+                </p>
                 <h4>Python Backend</h4>
                 <p>The python backend was split into 3 main stages: NIMA image assessment, Mathematically calculated metrics and MLLM generated feedback using llama vision 3.2.</p>
                 <br>
