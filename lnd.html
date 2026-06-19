@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Page Title | Josh Eyres</title>
+  <title>Ludonarrative Design | Josh Eyres</title>
   <link rel="stylesheet" href="CSS/style.css" />
   <link rel="icon" type="image/png" href="Images/favicon-32x32.png">
 </head>
@@ -25,9 +25,67 @@
   </header>
 
   <!-- Page content -->
-  <main>
-    <h1>Page Title</h1>
-    <p>Page content goes here...</p>
+  <main class="explorer-layout">    
+    <div class="project-view">
+
+        <div class="project-title">
+            <h1>VR Photography</h1>
+        </div>
+
+        <div class="project-hero">
+            <div class="video-responsive-wrapper">
+              <iframe 
+                  width="560" 
+                  height="315" 
+                  src="https://www.youtube.com/embed/b8mcVtT71Rc" 
+                  title="YouTube video player" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                  allowfullscreen>
+              </iframe>
+          </div>
+        </div>
+
+        <div class="project-dossier">
+            <div class="dossier-sidebar">
+                <h3>// SYSTEM_SPECS</h3>
+                <ul class="spec-list">
+                    <li><span class="label">ENGINE:</span> </li>
+                    <li><span class="label">LANGUAGE:</span> </li>
+                    <li><span class="label">RENDER_PIPE:</span> </li>
+                    <li><span class="label">CORE_TECH:</span> </li>
+                </ul>
+
+                <h3>// DEPLOYMENT</h3>
+                <ul class="spec-list">
+                    <li><a href="https://github.com/JMEyres/VRPhotography_Public" class="file-link">> ACCESS_SOURCE_CODE</a></li>
+                </ul>
+            </div>
+            
+            <div class="dossier-content">
+                <h3>01 // PROJECT_ABSTRACT</h3>
+                <p></p>
+
+                <br>
+
+                <h3>02 // ARCHITECTURE_DETAILED</h3>
+                <p></p>
+                <img src="/Images/TechnicalMap.png" class="project-image">
+                <br>
+
+                <h3>03 // HURDLES_RESOLVED</h3>
+                <p>The technical challenges faced during development and the engineering solutions implemented...</p>
+
+                <br>
+                <h3>04 // RESEARCH_PAPER</h3>
+                <p>If you would like to look at the full research paper i wrote for this project, please click the link below.</p>
+
+                <a href="./PDFs/VR Photography Dissertation - HCAIGD - Josh Eyres s5304176.pdf" class="file-link" target="_blank">
+                    > FETCH_FULL_RESEARCH_PAPER.PDF (Detailed Methodology & Findings)
+                </a>
+            </div>
+        </div>
+    </div> 
   </main>
 
   <footer>
