@@ -116,12 +116,22 @@
                 <p>
                   The main technical challenges for this project was working within the new Unity render graph system and making sure the project ran smoothly while in VR to avoid any motion sickness.</p>
                 <br>
+                <h5>Render Graph</h5>
                 <p>
-                  The Render graph system...
+                  The Render graph system has become the main render pipeline for Unity in versions 6+, and its main aim is to optimize runtime resources for rendering automatically improving performance overall. It also introduces custom scriptable render passes to allow you to grab data you need during this cycle so everything stays optimized. It's because of the benefits and future proofing i decided to work within this new system rather than jumping back a few versions or finding some other workaround instead.
+                  <img src="/Images/RenderGraph.png" class="project-image">
+                  I made a single render pass to grab both the color data (The image from the camera) and the depth data from the camera in the exact same frame, allowing me to utilise this information within the backend to calculate the subject far more accurately than i would have been able to otherwise. Another benefit of this setup is it tackles the second technical challenge in optimising the project for VR along with having available computational resources for the backend calculations and AI models.
                 </p>
                 <br>
+                <h5>Performance</h5>
                 <p>
-                  Optimising the project...
+                  Optimising the project came in a few different forms for this project, one being the render graph previously mentioned. Another was the choice of AI models i ran and how i ran them, choosing NIMA was primarily due to it's better performance at the time but it had the added benefit of being built upon the mobile net architecture making it much smaller and more performant than other models, the two versions of this were also ran sequentially rather than simultaneously to avoid any freezing or stutters in the unity application.
+                  <br>
+                  <br>
+                  Another choice for computational load was to use mathematical calculations for the subject detection within the metric calculations instead of a third AI model which also had the added benefit of being explainable rather than black box. Finally for the backend, i ran the smallest Llama-Vision model (11b Parameters) through a local client Ollama, which has automated memory management and hardware offloading out of the box rather than having to manually optimize how it's ran within code and potentially getting it wrong.
+                  <br>
+                  <br>
+                  The final optimization that i will mention is the choice to include a "Review station" for the photos taken within the application, again there are multiple reasons for this, firstly it mirrors the real world work flow of taking photos on camera choosing which to keep at a glance using the camera itself and then offloading them to a pc or some other device to edit or review further. But the optimization benefit of this review station is that it allows the user to choose when they want to run all the heavy analysis rather than it being run on every photo taken or when they view them on the camera creating deferred execution, which i put a loading screen in so the user expects to have to wait making it a less frustrating experience.
                 </p>
 
                 <br>
