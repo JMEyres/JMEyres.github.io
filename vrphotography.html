@@ -120,6 +120,8 @@
                 <p>
                   The Render graph system has become the main render pipeline for Unity in versions 6+, and its main aim is to optimize runtime resources for rendering automatically improving performance overall. It also introduces custom scriptable render passes to allow you to grab data you need during this cycle so everything stays optimized. It's because of the benefits and future proofing i decided to work within this new system rather than jumping back a few versions or finding some other workaround instead.
                   <img src="/Images/RenderGraph.png" class="project-image">
+                  <br>
+
                   I made a single render pass to grab both the color data (The image from the camera) and the depth data from the camera in the exact same frame, allowing me to utilise this information within the backend to calculate the subject far more accurately than i would have been able to otherwise. Another benefit of this setup is it tackles the second technical challenge in optimising the project for VR along with having available computational resources for the backend calculations and AI models.
                 </p>
                 <br>
