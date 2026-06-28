@@ -43,12 +43,12 @@ const projects = {
     "imgPath": "Images/Raytracer/Normal 1 Pass.png",
     "gallery": ["Images/Raytracer/Basic Raytracer.jpg", "Images/Raytracer/Normal 1 Pass.png", "Images/Raytracer/Normal 10 Passes.png", "Images/Raytracer/Emissive 1 Pass.png", "Images/Raytracer/Emissive 5 Passes.png", "Images/Raytracer/Emissive 10 Passes.png", "Images/Raytracer/Accumulation.png", "Images/Raytracer/Passes vs time.png", "Images/Raytracer/Threads vs time.png"],
     "icon": "Images/beta-icon.png",
-    "tags": ["C++", "CSS", "OpenGL"]
+    "tags": ["C++", "OpenGL"]
   },
   "project-charlie": {
-    "dirTitle": "Custom Game Engine",
-    "title": "NSEngine",
-    "description": `A custom game engine built using c++, cmake, `,
+    "dirTitle": "BFX Game Jam | What goes around comes around",
+    "title": "What goes around comes around",
+    "description": ``,
     "bg": "url('Images/beta-bg.jpg')",
     "icon": "Images/beta-icon.png",
     "tags": ["HTML", "CSS", "JS"]
