@@ -355,6 +355,26 @@ footer {
     font-size: 0.9rem;
 }
 
+/* Global Browser Scrollbars */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px; /* Horizontal bar sizing if needed */
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-orange);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ff9d54;
+    box-shadow: 0 0 15px rgba(255, 122, 26, 0.6);
+}
+
 /* -------------------- Media Queries for Tablets & Desktops -------------------- */
 @media (min-width: 768px) {
     .hero-header {

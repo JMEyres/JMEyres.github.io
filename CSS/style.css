@@ -129,26 +129,22 @@ a { text-decoration: none; transition: 0.2s; }
     padding-right: 5px;
 }
 
-/* Custom Scrollbars */
-.project-view::-webkit-scrollbar,
-.project-directory::-webkit-scrollbar {
+/* Global Browser Scrollbars */
+::-webkit-scrollbar {
     width: 6px;
     height: 6px; /* Horizontal bar sizing if needed */
 }
 
-.project-view::-webkit-scrollbar-track,
-.project-directory::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     background: rgba(0, 0, 0, 0.8);
 }
 
-.project-view::-webkit-scrollbar-thumb,
-.project-directory::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background: var(--accent-orange);
     border-radius: 4px;
 }
 
-.project-view::-webkit-scrollbar-thumb:hover,
-.project-directory::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
     background: #ff9d54;
     box-shadow: 0 0 15px rgba(255, 122, 26, 0.6);
 }
