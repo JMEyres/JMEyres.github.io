@@ -70,6 +70,10 @@
             <div class="dossier-content">
                 <h3>01 // PROJECT_ABSTRACT</h3>
                 <p>
+                  The Final Transmission is a short, atmospheric story about exploration, trust, and the shifting nature of truth; set aboard a seemingly abandoned space station called the Aletheia. The only presence left on board is an AI caretaker. It's been alone for a long time. Whether it ’s helpful, hostile, or hiding something, is for the player to decide.
+                  <br> <br>
+                  The core narrative revolves around the station going dark, the crew mysteriously disappearing and the ambiguity of the AIs intentions. The core gameplay loop revolves around interacting with the dynamic ship AI, exploring a computer terminal and reading crew logs and notes to piece together the percieved truth of what happened aboard the Aletheia. The game is designed to be very morally ambiguous the AI could be telling the truth, or it could be spreading misinformation for its own gain, the crew could be victims or the culprits. The player's interpretation and opinion shapes the choices they make and becomes their truth but nothing is ever truly confirmed.
+
                   Project involved:
                   - Designing the game to intertwine mechanics/gameplay with story
                   - Generating voice lines using AI
@@ -82,12 +86,40 @@
                 <br>
 
                 <h3>02 // ARCHITECTURE_DETAILED</h3>
-                <p></p>
+                  <p>
+                    The architectural focus of this project centered on ludonarrative design, marrying gameplay mechanics with branching interactive storytelling to achieve tight narrative harmony. The primary narrative device for this project was the station AI which i utilised various mechanics and design choices to create:
+                  </p>
+                  <br>
+                  <ul>
+                    <li>
+                      <strong>Dynamic Reputation:</strong> Implemented a state-tracking backend that monitors player dialogue choices and actions. This system dynamically shifts the AI caretaker’s disposition across a spectrum of behavioral states (e.g., escalating from cooperative to evasive or overtly hostile) based on how trusting or accusatory the player is.
+                    </li>
+                    <li>
+                      <strong>Generative Dialogue & Asset Pipeline:</strong> To reinforce the uncanny, synthetic presence of the AI, both the textual scripts and vocal audio files were synthesized using generative AI models. By intentionally prompting for variations in tone - ranging from over-helpfulness to subtle suspicion - the pipeline introduced an inherently artificial tone and mannerisms that weaponize the AI's communication to distort or validate the player's perspective.
+                    </li>
+                    <li>
+                      <strong>The AI as an unreliable guide:</strong> 
+                    </li>
+                    <br>
+                    <p>
+                      Environmental storytelling:
+                      - Notes and logs to contradict the AI
+                      - Timed events happening, like the explosion
+                      - Some events based on information the player just learned
+                      - Events themselves are a storytelling device
+                      </p>
+                      <br>
+                    <p>
+                      Subjective Ending: The culmination of the branching story paths feeds into a final messge mechanic where the player compiles a definitive "Final Transmission." This transmission serves as an explicit choice on what the player believes happened aboard the station, subsequently defining the narrative's conclusion.
+                    </p>
+                  </ul>
+                </p>
                 <img src="" class="project-image">
                 <br>
 
                 <h3>03 // HURDLES_RESOLVED</h3>
-                <p>The technical challenges faced during development and the engineering solutions implemented...</p>
+                <p>Designing as a programmer</p>
+                <p>Managing a branching story/Story manager</p>
             </div>
         </div>
     </div> 
@@ -95,6 +127,6 @@
 
   <footer>
     <p>&copy; 2025 Josh Eyres. All rights reserved.</p>
-  </footer>
+  </footer> 
 </body>
 </html>
