@@ -56,14 +56,14 @@
                     <li><span class="label">CORE_TECH: Branching story, AI Voice Generation</span> </li>
                 </ul>
 
-                <h3>// DEPLOYMENT</h3>
-                <ul class="spec-list">
-                    <li><a href="" class="file-link">> ACCESS_SOURCE_CODE</a></li>
-                </ul>
-
                 <h3>// GRADE</h3>
                 <ul class="spec-list">
                     <li><span class="label">75 / 100</span> </li>
+                </ul>
+
+                <h3>// DEPLOYMENT</h3>
+                <ul class="spec-list">
+                    <li><a href="" class="file-link">> ACCESS_SOURCE_CODE</a></li>
                 </ul>
             </div>
             
@@ -73,14 +73,6 @@
                   The Final Transmission is a short, atmospheric story about exploration, trust, and the shifting nature of truth; set aboard a seemingly abandoned space station called the Aletheia. The only presence left on board is an AI caretaker. It's been alone for a long time. Whether it ’s helpful, hostile, or hiding something, is for the player to decide.
                   <br> <br>
                   The core narrative revolves around the station going dark, the crew mysteriously disappearing and the ambiguity of the AIs intentions. The core gameplay loop revolves around interacting with the dynamic ship AI, exploring a computer terminal and reading crew logs and notes to piece together the percieved truth of what happened aboard the Aletheia. The game is designed to be very morally ambiguous the AI could be telling the truth, or it could be spreading misinformation for its own gain, the crew could be victims or the culprits. The player's interpretation and opinion shapes the choices they make and becomes their truth but nothing is ever truly confirmed.
-
-                  Project involved:
-                  - Designing the game to intertwine mechanics/gameplay with story
-                  - Generating voice lines using AI
-                  - AI voice generation itself is a ludonarrative element because the ai generated voice is for an AI in the game
-                  - Player's choices shape the truth  Echos history in that truth comes from perspective
-                  - AI is an unreliable guide
-                  - Reading and exploration itself is a mechanic
                 </p>
 
                 <br>
@@ -98,20 +90,18 @@
                       <strong>Generative Dialogue & Asset Pipeline:</strong> To reinforce the uncanny, synthetic presence of the AI, both the textual scripts and vocal audio files were synthesized using generative AI models. By intentionally prompting for variations in tone - ranging from over-helpfulness to subtle suspicion - the pipeline introduced an inherently artificial tone and mannerisms that weaponize the AI's communication to distort or validate the player's perspective.
                     </li>
                     <li>
-                      <strong>The AI as an unreliable guide:</strong> 
+                      <strong>The AI as an unreliable guide:</strong> The Ship's AI was engineered to be intentionally unreliable, mirroring public anxiety regarding the future of artificial intelligence. This design aims to achieve tight ludonarrative harmony, by forcing players to cross-examine the AI’s information rather than blindly trusting it, the gameplay loop directly subverts the passive reliance on automated systems often seen in the real world.
                     </li>
                     <br>
-                    <p>
-                      Environmental storytelling:
-                      - Notes and logs to contradict the AI
-                      - Timed events happening, like the explosion
-                      - Some events based on information the player just learned
-                      - Events themselves are a storytelling device
-                      </p>
-                      <br>
-                    <p>
-                      Subjective Ending: The culmination of the branching story paths feeds into a final messge mechanic where the player compiles a definitive "Final Transmission." This transmission serves as an explicit choice on what the player believes happened aboard the station, subsequently defining the narrative's conclusion.
-                    </p>
+                    <li>
+                      <strong>Environmental & Systemic Storytelling:</strong> Exploration functions as a core mechanic through a network of terminal notes, logs, and physical clues scattered across the station. This data-driven environment is intentionally contradictory, some logs validate the AI, while others completely undermine it, forcing the player to filter information actively.
+                    </li>
+                    <li>
+                      <strong>Dynamic Event-Driven Narrative (The Story Manager):</strong> Deployed a centralized event manager to coordinate chronological and conditional events. This system triggers events based on player progression data—such as a localized explosion firing coincidentally right after the player uncovers a restricted file, implicating the AI. It also handles conditional logic, such as dynamically serving conflicting pieces of evidence in sequence to intentionally obfuscate the truth.
+                    </li>
+                    <li>
+                      <strong>Subjective Ending Logic:</strong> The culmination of the branching paths feeds into a final message mechanic where the player constructs a definitive "Final Transmission." This transmission serves as an explicit choice reflecting what the player chose to believe, directly generating a conclusion tailored to their subjective interpretation of the terminal state.
+                    </li>
                   </ul>
                 </p>
                 <img src="" class="project-image">
