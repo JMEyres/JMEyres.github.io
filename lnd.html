@@ -97,7 +97,7 @@
                       <strong>Environmental & Systemic Storytelling:</strong> Exploration functions as a core mechanic through a network of terminal notes, logs, and physical clues scattered across the station. This data-driven environment is intentionally contradictory, some logs validate the AI, while others completely undermine it, forcing the player to filter information actively.
                     </li>
                     <li>
-                      <strong>Dynamic Event-Driven Narrative (The Story Manager):</strong> Deployed a centralized event manager to coordinate chronological and conditional events. This system triggers events based on player progression data—such as a localized explosion firing coincidentally right after the player uncovers a restricted file, implicating the AI. It also handles conditional logic, such as dynamically serving conflicting pieces of evidence in sequence to intentionally obfuscate the truth.
+                      <strong>Dynamic Event-Driven Narrative (The Story Manager):</strong> Implemented a centralized event manager to coordinate chronological and conditional events. This system triggers events based on player progression data—such as a localized explosion firing coincidentally right after the player uncovers a restricted file, implicating the AI. It also handles conditional logic, such as dynamically serving conflicting pieces of evidence in sequence to intentionally obfuscate the truth.
                     </li>
                     <li>
                       <strong>Subjective Ending Logic:</strong> The culmination of the branching paths feeds into a final message mechanic where the player constructs a definitive "Final Transmission." This transmission serves as an explicit choice reflecting what the player chose to believe, directly generating a conclusion tailored to their subjective interpretation of the terminal state.
@@ -108,7 +108,9 @@
                 <br>
 
                 <h3>03 // HURDLES_RESOLVED</h3>
-                <p>Designing as a programmer</p>
+                <p>
+                  One of the main challenges with this project was switching to a design focused mindset as a programmer, while i have experience designing the ideas of games, it was always done from a mechanics-first standpoint. The main difficulty with switching point of view was managing and designing a branching story. To resolve this challenge i mapped out the story using a "story manager" along with working backwards from the endings i wanted for the vertical slice demo. By knowing the endings it allowed me to know where i needed to end up and therefore i was some of the way to how to get there. By then structuring the story using specific events i could systemically tackle them one by one until i had the finished product.
+                </p>
                 <p>Managing a branching story/Story manager</p>
             </div>
         </div>
