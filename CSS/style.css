@@ -393,6 +393,29 @@ a { text-decoration: none; transition: 0.2s; }
     height: auto;
     display: block;
 }
+/* Container to frame the external embed */
+.storyboard-container {
+  width: 100%;
+  max-width: 800px;             /* Matches the layout width of your text content */
+  margin: 32px auto;            /* Centers it and provides clean vertical separation */
+  background: rgba(15, 20, 20, 0.7); /* Faint dark background backdrop */
+  border: 1px solid rgba(238, 110, 36, 0.2); /* Faint orange border to match the HUD theme */
+  border-left: 4px solid #ee6e24; /* Strong accent marker line matching your text cards */
+  border-radius: 2px;
+  padding: 12px;                /* Creates a clean mechanical bezel around the screen */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
+}
+
+/* Make the iframe responsive and fit the bezel perfectly */
+.storyboard-container iframe {
+  width: 100%;
+  height: 450px;                /* Fixed display height for the viewport window */
+  display: block;
+  border: none;
+  background: #ffffff;          /* Matches Miro's internal grid canvas background */
+  border-radius: 1px;
+}
 
 /* -------------------- Media Queries for Tablets & Desktops -------------------- */
 @media (min-width: 768px) {
