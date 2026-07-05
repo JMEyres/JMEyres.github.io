@@ -232,6 +232,7 @@ body {
 
 .card-title{
     font-family: monospace;
+    text-align: center;
 }
 
 .card:hover {
@@ -410,7 +411,6 @@ footer {
 /* Tighten up the paragraph spacing to look like a clean data transmission */
 .crew-log-card p {
   line-height: 1.6;
-  max-width: 800px;                    /* Restricts text stretching too wide across a monitor */
   color: #e0e0e0;                      /* Slightly muted off-white to make it easier on the eyes */
   margin-bottom: 16px;                 /* Clean paragraph separation without needing raw <br> tags */
 }
