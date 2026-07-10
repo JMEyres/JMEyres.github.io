@@ -79,7 +79,7 @@
                 <p>
                   There is a three phase structure to this project, the unity environment the user interacts with, The flask server that acts as a bridge, and the python backend which serves as the computational stage for photo assessment.
                 </p>
-                <img src="/Images/TechnicalMap.png" class="project-image">
+                <img src="/Images/TechnicalMap.png" class="crew-log-image">
                 <h4>Unity Environment</h4>
                 <p>
                   The unity environment for this prototype aimed to mirror the process of taking a photo using a DSLR in real-life as closely as possible. The focus was on the functionality of the camera over the environments themselves. Due to this fact i made use of low poly environments, specifically demo environments from asset packs i had previously purchased, for two main reasons: First, i could source a lot of environments quickly which due to the short time frame for this project was essential (3 months all inclusive planning -> finish). Secondly, they are far more performant which is necessary due to limited computational budget from running multiple AI models and VR alongside the unity application. 
@@ -114,7 +114,7 @@
                 <p>
                   The role of the MLLM model, in this case Llama-vision 3.2, chosen because it is open source and not as resource intensive as other models, is to take all the given data and interpret it into readable, actionable feedback for the user. It is provided with the NIMA scores, the metric data, and the image itself to generate the feedback along with some instructions to avoid attention drift as much as possible
                 </p>
-                <img src="/Images/Prompt.png" class="project-image">
+                <img src="/Images/Prompt.png" class="crew-log-image">
                 <br>
 
                 <h3>03 // HURDLES_RESOLVED</h3>
@@ -124,7 +124,7 @@
                 <h5>Render Graph</h5>
                 <p>
                   The Render graph system has become the main render pipeline for Unity in versions 6+, and its main aim is to optimize runtime resources for rendering automatically improving performance overall. It also introduces custom scriptable render passes to allow you to grab data you need during this cycle so everything stays optimized. It's because of the benefits and future proofing i decided to work within this new system rather than jumping back a few versions or finding some other workaround instead.
-                  <img src="/Images/RenderGraph.png" class="project-image">
+                  <img src="/Images/RenderGraph.png" class="crew-log-image">
                   <br>
 
                   I made a single render pass to grab both the color data (The image from the camera) and the depth data from the camera in the exact same frame, allowing me to utilise this information within the backend to calculate the subject far more accurately than i would have been able to otherwise. Another benefit of this setup is it tackles the second technical challenge in optimising the project for VR along with having available computational resources for the backend calculations and AI models.
@@ -145,7 +145,7 @@
                 <h3>04 // RESEARCH_PAPER</h3>
                 <p>If you would like to look at the full research paper i wrote for this project which is far more detailed, please click the link below.</p>
 
-                <a href="./PDFs/VR Photography Dissertation - HCAIGD - Josh Eyres s5304176.pdf" class="file-link" target="_blank">
+                <a href="./PDFs/VR Photography Dissertation - HCAIGD - Josh Eyres.pdf" class="file-link" target="_blank">
                     > FETCH_FULL_RESEARCH_PAPER.PDF (Detailed Methodology & Findings)
                 </a>
             </div>

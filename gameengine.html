@@ -33,16 +33,8 @@
         </div>
 
         <div class="project-hero">
-            <div class="video-responsive-wrapper">
-              <iframe 
-                  width="560" 
-                  height="315" 
-                  src="https://www.youtube.com/embed/b8mcVtT71Rc" 
-                  title="YouTube video player" 
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                  allowfullscreen>
-              </iframe>
+          <div class="hobby-image-wrapper">
+            <img src="Images/GameEngine/UMLDiagramECS.png" class="project-image" onclick="window.open(this.src, '_blank')">
           </div>
         </div>
 
@@ -55,11 +47,6 @@
                     <li><span class="label">CORE_TECH:</span> </li>
                 </ul>
 
-                <h3>// GRADE</h3>
-                <ul class="spec-list">
-                    <li><span class="label">77 / 100</span> </li>
-                </ul>
-
                 <h3>// DEPLOYMENT</h3>
                 <ul class="spec-list">
                     <li><a href="" class="file-link">> ACCESS_SOURCE_CODE</a></li>
@@ -69,31 +56,44 @@
             <div class="dossier-content">
                 <h3>01 // PROJECT_ABSTRACT</h3>
                 <p>
-                  A custom game engine coded in C++ using, OpenGL, SDL, CMAKE and more.
-                  - Coded in C++
-                  - OpenGL/Glew
-                  - SDL
-                  - Create a simple game within the engine
+                  The goal of this project was to develop a 3D game engine and prototype game in C++ using a custom hybrid architectural design combining inheritance and an Entity Component System (ECS). Built from the ground up using a professional toolchain, including CMake for build management and Git via Fork, the engine focuses on highly integrated subsystems designed for scalability and reusability.
+                  <br><br>
+                  Architecturally, the system utilizes a clear hierarchy: a centralized Core manager handles initialization, baseline systems execution, and management of independent game environments. These environments encapsulate scene-specific logic, owning a collection of entities which in turn host custom component modules. A basic structural overview of this data ownership flow can be seen below.
+                  <img src="Images/GameEngine/GameEngineOverview.png" class="crew-log-image">
                 </p>
 
                 <br>
 
                 <h3>02 // ARCHITECTURE_DETAILED</h3>
                 <p>
-                  - Talk about Entity component system
+                  Tech used C++, Rend, SDL, ReactPhysics3D
+
+                  Engine Loop
+                  - Events (just what they are, let the report explain)
+
+                  Environments
+
+                  Entity Component system
+                  - Custom Components
+                  <img src="Images/GameEngine/Component.png" class="crew-log-image" style="width: 100%; max-width: 600px; height: 450px; object-fit: contain;">
+                  Resources and inheritance
+                  <img src="Images/GameEngine/ResourceSystem.png" class="crew-log-image" style="width: 100%; max-width: 600px; height: 300px; object-fit: contain;">
+                  Simple game demo
                 </p>
-                <img src="" class="project-image">
+                
                 <br>
 
                 <h3>03 // HURDLES_RESOLVED</h3>
-                <p>The technical challenges faced during development and the engineering solutions implemented...</p>
+                <p>
+                  The single biggest challenge i faced while creating this project was the shear volume of things to consider while creating a game engine, which can be easily become overwhelming. Because I tackled this through upfront planning rather than coding on the fly, enforcing a strict structural hierarchy before opening the IDE at all. As detailed in the class architecture diagram at the very top of this page, I mapped the entire engine into four isolated areas of responsibility: configuration control (Core), scene management (Environment), game object creation (Entity), and modular behavior (Component). This planning ensured that no matter how many features were added later, each had a predetermined, isolated slot to live in without breaking the rest of the ecosystem.
+                </p>
 
                 <br>
                 <h3>04 // RESEARCH_PAPER</h3>
-                <p>If you would like to look at the full research paper i wrote for this project, please click the link below.</p>
+                <p>If you would like to look at the full paper i wrote for this project, please click the link below.</p>
 
-                <a href="./PDFs/VR Photography Dissertation - HCAIGD - Josh Eyres s5304176.pdf" class="file-link" target="_blank">
-                    > FETCH_FULL_RESEARCH_PAPER.PDF (Detailed Methodology & Findings)
+                <a href="./PDFs/GEP Assignment - JoshEyres.pdf" class="file-link" target="_blank">
+                    > FETCH_FULL_RESEARCH_PAPER.PDF
                 </a>
             </div>
         </div>
