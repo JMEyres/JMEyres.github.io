@@ -419,6 +419,49 @@ footer {
 .crew-log-card p:last-child {
   margin-bottom: 0;
 }
+.carousel-container {
+    position: relative;
+    width: 100%;
+    /* Adds 60px of space on the left and right for the arrows to sit in */
+    padding: 0 60px; 
+    box-sizing: border-box;
+}
+
+.jam-carousel {
+    display: flex;
+    overflow-x: hidden; 
+    scroll-behavior: smooth; 
+    gap: 20px;
+    width: 100%;
+    scroll-snap-type: x mandatory;
+}
+
+.jam-card {
+    flex: 0 0 100%; /* Forces exactly ONE card universally */
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 122, 26, 0.15);
+    padding: 20px;
+    box-sizing: border-box;
+    scroll-snap-align: start;
+}
+
+/* Arrow Styling */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: var(--accent-orange);
+    border: 1px solid var(--accent-orange);
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+/* Places them cleanly in the center of that 60px side padding */
+.prev-btn { left: 15px; }  
+.next-btn { right: 15px; }
+
 /* -------------------- Media Queries for Tablets & Desktops -------------------- */
 @media (min-width: 768px) {
     .hero-header {

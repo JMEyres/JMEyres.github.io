@@ -26,6 +26,18 @@
     }
   }
 
+  function moveCarousel(direction) {
+    const track = document.getElementById('jamTrack');
+    const cardWidth = track.querySelector('.jam-card').offsetWidth;
+    const gap = 20; // Matches the gap value in your CSS
+    
+    // Scroll the track left or right by exactly one card width + its gap
+    track.scrollBy({
+        left: (cardWidth + gap) * direction,
+        behavior: 'smooth'
+    });
+}
+
   window.addEventListener('scroll', () => {
     animateCards();
     fadeArrowOnScroll();
