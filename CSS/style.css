@@ -11,9 +11,11 @@
     --window-glass: rgba(0, 0, 0, 0.4);
     --shadow-glow: rgba(255, 122, 26, 0.15);
     
-    /* Layout Tokens */
     --radius: 12px;
-    --gap: 30px; /* Adjusted down slightly for mobile harmony */
+    --gap: 30px;
+}
+html{
+    scroll-behavior: smooth;
 }
 
 * {
