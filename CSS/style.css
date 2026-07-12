@@ -491,6 +491,45 @@ a { text-decoration: none; transition: 0.2s; }
     display: block;
 }
 
+/* Container for the About Page link section */
+.contact-terminal {
+    margin-top: 40px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.15); /* Slightly darker panels */
+    border-left: 2px solid var(--accent-orange); /* Simple terminal accent line */
+}
+
+.contact-terminal h3 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.95rem;
+    color: #888888; /* Dimmed text for the section label */
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Horizontal track for the links */
+.links-track {
+    display: flex;
+    gap: 30px;
+}
+
+/* Subtle, text-only link styling */
+.link-item {
+    font-family: 'Courier New', Courier, monospace;
+    color: #e0e0e0;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
+}
+
+/* Sharp, glowy hover state instead of a full background color */
+.link-item:hover {
+    color: var(--accent-orange);
+    text-shadow: 0 0 8px var(--accent-orange);
+}
+
 /* -------------------- Media Queries for Tablets & Desktops -------------------- */
 @media (min-width: 768px) {
     html, body {
@@ -498,6 +537,11 @@ a { text-decoration: none; transition: 0.2s; }
         body:has(.content-wrapper) {
             overflow-y: auto !important;
         }
+    }
+
+    .links-track {
+        flex-direction: column;
+        gap: 12px;
     }
 
     .simple-header {
