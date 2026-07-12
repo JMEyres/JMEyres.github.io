@@ -277,7 +277,7 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 15px var(--shadow-glow);
     transition: all 0.2s ease;
     aspect-ratio: auto; 
-    min-height: 250px;
+    min-height: 400px;
     overflow: hidden;
 }
 
@@ -462,10 +462,60 @@ footer {
     z-index: 10;
 }
 
+.carousel-btn:hover {
+    background: var(--accent-orange);
+    color: #000000; /* Flips the arrow text to black for high contrast */
+    box-shadow: 0 0 10px var(--accent-orange); /* Adds a subtle terminal-style glow effect */
+}
+
 /* Places them cleanly in the center of that 60px side padding */
 .prev-btn { left: 15px; }  
 .next-btn { right: 15px; }
 
+.jam-card video {
+    width: 100%;
+    height: auto;
+    max-height: 400px; /* Keeps the video compact so your text still fits comfortably */
+    object-fit: cover; /* or contain, depending on if you want it cropped or letterboxed */
+    border: 1px solid rgba(255, 122, 26, 0.3); /* Optional: matches your orange theme borders */
+    margin-bottom: 15px;
+}
+
+.jam-card h3 {
+    font-family: monospace; /* If you want a terminal font for titles */
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+/* If you wrap your slashes in a span, or want to make the title accent color: */
+.jam-card h3 span {
+    color: var(--accent-orange);
+}
+
+.jam-card ul {
+    list-style: none; /* Removes the default boring white dots */
+    padding-left: 0;   /* Resets default browser indent */
+    margin: 15px 0;
+}
+
+.jam-card li {
+    position: relative;
+    padding-left: 20px; /* Makes room for the new custom bullet */
+    margin-bottom: 8px;
+    line-height: 1.4;   /* Adds a bit of breathing room between lines */
+    color: #e0e0e0;     /* Slightly softer white so it's easy on the eyes */
+}
+
+/* Creates a clean, custom orange terminal bullet */
+.jam-card li::before {
+    content: ">";
+    top: 4px; 
+    position: absolute;
+    left: 0;
+    color: var(--accent-orange);
+    font-family: monospace;
+    font-weight: bold;
+}
 /* -------------------- Media Queries for Tablets & Desktops -------------------- */
 @media (min-width: 768px) {
     .hero-header {
