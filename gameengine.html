@@ -69,6 +69,7 @@
                 </p>
                 <div class="engine-pipeline">
                   <span class="pipeline-title">Engine Loop</span>
+                  <p>The engine has 5 different update cycles used to trigger events, handle physics, rendering, etc. These are shown below, the names are mostly self explanatory, but there are explanations for where each cycle is called in the paper linked at the bottom of this page.</p>
                   <ul class="engine-spec-list">
                       <li>OnCreate</li>
                       <li>OnInitialize</li>
@@ -77,19 +78,46 @@
                       <li>OnDisplay</li>
                   </ul>
                 </div>
+                <h4>Environments</h4>
                 <p>
-                  Environments
+                  This game engine has the framework to be able to effectively create "scenes", or environments in this case, that act just like the scenes in Unity or Unreal. Essentially the scene is the overall parent of every object, and subsequently every component on each object within each given environment. You can take a look back at the engine overview further up the page to see that hierarchy Engine > Environment > Entities > Components. Structuring it this way means that while there isn't a hardcoded environment manager, you could easily spin up your own manager to handle creating or destroying custom environments on the fly.
                 </p>
                <br>
+               <h4>Entity Component System</h4>
                 <p>
-                  Entity Component system
-                  - Custom Components
-                  <img src="Images/GameEngine/Component.png" class="crew-log-image" style="width: 100%; max-width: 600px; height: 450px; object-fit: contain;">
+                  As i mentioned previously this game engine leverages an Entity component system, which as the name suggests (and as i have previously lightly touched on) breaks objects down into 3 parts. The entity itself, this is simply a unique id that acts as a container, think the chassis of a car holding the rest of the components together. Then you have the components and systems, which in pure ECS frameworks are separate. However, this engine utilizes more of an object-oriented ECS framework that combines the two, in the car analogy they would be the computers (components) and engine (systems). These components handle their own update cycles when relevant as seen in the image below.
                 </p>
+                <img src="Images/GameEngine/RendererComponent.png" class="crew-log-image" style="width: 100%; max-width: 600px; height: 450px; object-fit: contain;">
+                <p>The components currently included within the engine are as follows:</p>
+                <dl class="component-list">
+                      <dt>Audio Source</dt>
+                      <dd>A component for handling where audio gets played</dd>
+                      <dt>Box Collider</dt>
+                      <dd></dd>
+                      <dt>Camera</dt>
+                      <dd></dd>
+                      <dt>Capsule Collider</dt>
+                      <dd></dd>
+                      <dt>GUI</dt>
+                      <dd></dd>
+                      <dt>Renderer</dt>
+                      <dd></dd>
+                      <dt>Rigidbody</dt>
+                      <dd></dd>
+                      <dt>Sprite Renderer</dt>
+                      <dd></dd>
+                      <dt>Transform</dt>
+                      <dd></dd>
+                      <dt>Triangle Renderer</dt>
+                      <dd></dd>
+                  </dl>
+                <img src="Images/GameEngine/Component.png" class="crew-log-image" style="width: 100%; max-width: 600px; height: 450px; object-fit: contain;">
                <br>
                 <p>
                   Resources and inheritance
+                </p>
                   <img src="Images/GameEngine/ResourceSystem.png" class="crew-log-image" style="width: 100%; max-width: 600px; height: 300px; object-fit: contain;">
+                <p>
                   Simple game demo
                 </p>
                 

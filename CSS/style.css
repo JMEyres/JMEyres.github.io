@@ -577,7 +577,27 @@ a { text-decoration: none; transition: 0.2s; }
     color: var(--accent-orange);
     font-weight: bold;
 }
+.component-list {
+    font-family: 'Courier New', Courier, monospace;
+    margin: 20px 0;
+}
 
+/* The Term / Title */
+.component-list dt {
+    color: var(--accent-orange);
+    font-weight: bold;
+    font-size: 1rem;
+    margin-top: 15px;
+}
+
+/* The Explanation */
+.component-list dd {
+    color: #e0e0e0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-left: 20px; /* Indents the text slightly below the title */
+    margin-bottom: 10px;
+}
 /* -------------------- Media Queries for Tablets & Desktops -------------------- */
 @media (min-width: 768px) {
     html, body {
