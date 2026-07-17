@@ -66,15 +66,28 @@
                 <h3>02 // ARCHITECTURE_DETAILED</h3>
                 <p>
                   Tech used C++, Rend, SDL, ReactPhysics3D
-
-                  Engine Loop
-                  - Events (just what they are, let the report explain)
-
+                </p>
+                <div class="engine-pipeline">
+                  <span class="pipeline-title">Engine Loop</span>
+                  <ul class="engine-spec-list">
+                      <li>OnCreate</li>
+                      <li>OnInitialize</li>
+                      <li>OnPhysicsTick</li>
+                      <li>OnTick</li>
+                      <li>OnDisplay</li>
+                  </ul>
+                </div>
+                <p>
                   Environments
-
+                </p>
+               <br>
+                <p>
                   Entity Component system
                   - Custom Components
                   <img src="Images/GameEngine/Component.png" class="crew-log-image" style="width: 100%; max-width: 600px; height: 450px; object-fit: contain;">
+                </p>
+               <br>
+                <p>
                   Resources and inheritance
                   <img src="Images/GameEngine/ResourceSystem.png" class="crew-log-image" style="width: 100%; max-width: 600px; height: 300px; object-fit: contain;">
                   Simple game demo

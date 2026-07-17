@@ -476,9 +476,14 @@ footer {
     width: 100%;
     height: auto;
     max-height: 400px; /* Keeps the video compact so your text still fits comfortably */
+    max-width: 720px;
+    aspect-ratio: 16 / 9;
     object-fit: cover; /* or contain, depending on if you want it cropped or letterboxed */
-    border: 1px solid rgba(255, 122, 26, 0.3); /* Optional: matches your orange theme borders */
+    border: 2px solid rgba(255, 122, 26, 0.3); /* Optional: matches your orange theme borders */
     margin-bottom: 15px;
+    display: block;        /* 1. Forces the video to behave like a block-level element */
+    margin-left: auto;     /* 2. Automatically splits the remaining horizontal space... */
+    margin-right: auto;
 }
 
 .jam-card h3 {
@@ -515,6 +520,25 @@ footer {
     color: var(--accent-orange);
     font-family: monospace;
     font-weight: bold;
+}
+.jam-card a{
+    display: block;
+    text-align: center;
+}
+/* Subtle, text-only link styling */
+.link-item {
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--accent-color);
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
+}
+
+/* Sharp, glowy hover state instead of a full background color */
+.link-item:hover {
+    color: var(--accent-orange);
+    text-shadow: 0 0 8px var(--accent-orange);
 }
 /* -------------------- Media Queries for Tablets & Desktops -------------------- */
 @media (min-width: 768px) {
