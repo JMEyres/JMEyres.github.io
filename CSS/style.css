@@ -781,6 +781,9 @@ a { text-decoration: none; transition: 0.2s; }
     font-size: 0.8rem;
     letter-spacing: 0.5px;
 }
+.spec-list{
+    list-style-type:none;
+}
 /* Responsive collapse for mobile views */
 @media (max-width: 900px) {
     .dashboard-container {
