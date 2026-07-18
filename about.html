@@ -22,85 +22,78 @@
       <a href="./contact.html">Contact</a>
     </nav>
   </header>
-
-  <main class="content-wrapper">
   
-    <header class="page-header">
-      <h1 class="terminal-title">// SYSTEM_RECORD: BIOGRAPHY</h1>
-    </header>
+    <h2 class="system-title">// SYSTEM_RECORD: BIOGRAPHY</h2>
+      <div class="dashboard-container">
+    
+        <!-- Left Column: Biography & System Logs -->
+        <main class="dashboard-main">
+            
+            <section class="panel-card">
+                <h3>// CURRENT_STATUS</h3>
+                <p>Games programmer and creative technologist operating at the intersection of low-level engine architecture, graphics programming, and modern AI integration. Focus lies in analyzing system mechanics, optimizing render paths, and developing robust architectural solutions for real-time interactive environments.</p>
+            </section>
+            
+            <section class="panel-card">
+                <h3>// SERVICE_HISTORY</h3>
+                
+                <div class="history-item">
+                    <span class="timestamp">2025 - 2026</span>
+                    <h4>MSc Human-Centred AI for Games Development</h4>
+                    <span class="location">Bournemouth University</span>
+                    <p>Focused on advanced AI pipelines, computational graphics, and performance profiling for real-time spatial applications.</p>
+                </div>
+                
+                <div class="history-item">
+                    <span class="timestamp">16 Months</span>
+                    <h4>Simulation Engineering Placement</h4>
+                    <span class="location">Drilling Systems</span>
+                    <p>Engineered and optimized real-time industrial simulation frameworks, managing complex software systems and asset integration budgets.</p>
+                </div>
 
-    <!-- Bio Summary -->
-    <section class="crew-log-card">
-      <h3>// CURRENT_STATUS</h3>
-      <p>
-        Games programmer and creative technologist operating at the intersection of low-level engine architecture, graphics programming, and modern AI integration. Focus lies in analyzing system mechanics, optimizing render paths, and developing robust architectural solutions for real-time interactive environments.
-      </p>
-    </section>
+                <div class="history-item">
+                    <span class="timestamp">Graduated</span>
+                    <h4>BSc Games Software Engineering</h4>
+                    <span class="location">Undergraduate Degree</span>
+                    <p>Built a foundational core in low-level systems engineering, C++ architecture, data structures, and computer graphics principles.</p>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Right Column: System Assets/Specifications -->
+        <aside class="dashboard-sidebar">
+            <div class="panel-card sticky-sidebar">
+                <h3>// ASSET_MANIFEST</h3>
+                
+                <div class="manifest-group">
+                    <h4>[LANGUAGES]</h4>
+                    <p>C++, C#, Python, SQL, HTML/CSS</p>
+                </div>
+                
+                <div class="manifest-group">
+                    <h4>[ENGINES & TOOLS]</h4>
+                    <p>Unity 6 (Render Graph API), Unreal Engine, Raylib, Git, Flask, Ollama</p>
+                </div>
+                <div class="manifest-group cv-download-block">
+                  <h4>[SYSTEM_EXPORT]</h4>
+                  <a href="FETCH_CV.PDF" download class="cv-download-btn">> RUN bin/fetch_cv.sh</a>
+              </div>
+            </div>
+        </aside>
+      </div>
 
-    <!-- History Matrix -->
-    <section class="crew-log-card">
-      <h3>// SERVICE_HISTORY</h3>
+  <footer class="compact-terminal-footer">
+      <!-- Clean left-to-right link cluster -->
+      <div class="footer-links-group">
+          <a href="#" class="custom-footer-link">> LINKEDIN</a>
+          <a href="#" class="custom-footer-link">> GITHUB</a>
+          <a href="#" class="custom-footer-link">> EMAIL</a>
+      </div>
       
-      <div class="timeline-group">
-        <div class="timeline-item">
-          <div class="timeline-header">
-            <h4>MSc Human-Centred AI for Games Development</h4>
-            <span class="timeline-date">2025 - 2026</span>
-          </div>
-          <p class="timeline-sub">Bournemouth University</p>
-          <p>Focused on advanced AI pipelines, computational graphics, and performance profiling for real-time spatial applications.</p>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-header">
-            <h4>Simulation Engineering Placement</h4>
-            <span class="timeline-date">16 Months</span>
-          </div>
-          <p class="timeline-sub">Drilling Systems</p>
-          <p>Engineered and optimized real-time industrial simulation frameworks, managing complex software systems and asset integration budgets.</p>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-header">
-            <h4>BSc Games Software Engineering</h4>
-            <span class="timeline-date">Graduated</span>
-          </div>
-          <p class="timeline-sub">Undergraduate Degree</p>
-          <p>Built a foundational core in low-level systems engineering, C++ architecture, data structures, and computer graphics principles.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Technical Specs -->
-    <section class="crew-log-card">
-      <h3>// ASSET_MANIFEST</h3>
-      <div class="skills-grid">
-        <div class="skills-category">
-          <h4>[LANGUAGES]</h4>
-          <p>C++, C#, Python, SQL, HTML/CSS</p>
-        </div>
-        <div class="skills-category">
-          <h4>[ENGINES & TOOLS]</h4>
-          <p>Unity 6 (Render Graph API), Unreal Engine, Raylib, Git, Flask, Ollama</p>
-        </div>
-      </div>
-      <a href="" class="file-link" target="_blank">
-          > FETCH_CV.PDF
-      </a>
-    </section>
-
-    <div class="contact-terminal">
-        <h3>// EXTERNAL_LINKS</h3>
-        <div class="links-track">
-            <a href="https://linkedin.com/in/YOUR_USERNAME" target="_blank" rel="noopener noreferrer" class="link-item">> LINKEDIN</a>
-            <a href="https://github.com/YOUR_USERNAME" target="_blank" rel="noopener noreferrer" class="link-item">> GITHUB</a>
-            <a href="mailto:your.email@example.com" class="link-item">> EMAIL</a>
-        </div>
-    </div>
-  </main>
-
-  <footer>
-    <p>&copy; 2026 Josh Eyres. All rights reserved.</p>
+      <!-- Tiny copyright pushed to the far side or nestled right next to them -->
+      <span class="tiny-copyright">
+          &copy; 2026 Josh Eyres. All rights reserved.
+      </span>
   </footer>
 </body>
 </html>

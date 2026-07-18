@@ -7,8 +7,7 @@
   <link rel="stylesheet" href="CSS/style.css" />
   <link rel="icon" type="image/png" href="Images/favicon-32x32.png">
 </head>
-<body>
-  <!-- Simplified banner -->
+<body style="overflow: hidden">
   <header class="simple-header">
     <div class="logo">
       <a href="index.html">
@@ -31,7 +30,7 @@
       <input type="text" id="project-search" placeholder="Search directory..." autocomplete="off">
     </div>
     <ul id="project-list" class="file-list">
-      </ul>
+    </ul>
   </aside>
 
   <section class="project-view">
@@ -39,7 +38,8 @@
       <div class="titlebar">
         <span class="title-text" id="proj-title">System Idle...</span>
       </div>
-      <div class="window-content" id="window-content-main"> <img src="" id="proj-icon" class="win-icon" alt="">
+
+      <div class="window-content" id="window-content-main">   <img src="" id="proj-icon" class="win-icon" alt="">
           <h1 id="proj-header">Select a File</h1>
           <p id="proj-desc">Initialize a project from the directory to view data.</p>
           <img src="" id="proj-img">
@@ -53,8 +53,18 @@
   </section>
 </main>
 
-  <footer>
-    <p>&copy; 2025 Josh Eyres. All rights reserved.</p>
+  <footer class="compact-portfolio-footer">
+      <!-- Clean left-to-right link cluster -->
+      <div class="footer-links-group">
+          <a href="#" class="custom-footer-link">> LINKEDIN</a>
+          <a href="#" class="custom-footer-link">> GITHUB</a>
+          <a href="#" class="custom-footer-link">> EMAIL</a>
+      </div>
+      
+      <!-- Tiny copyright pushed to the far side or nestled right next to them -->
+      <span class="tiny-copyright">
+          &copy; 2026 Josh Eyres. All rights reserved.
+      </span>
   </footer>
 </body>
 </html>
@@ -145,7 +155,17 @@ function loadProject(id) {
   // --- 4. Update URL ---
   window.history.pushState(null, '', `?id=${id}`);
 }
+const projectSearch = document.getElementById('project-search');
+const projectList = document.getElementById('project-list');
 
+// Helper function to update placeholder text contextually
+function updatePlaceholderState() {
+    if (projectList.classList.contains('collapsed')) {
+        projectSearch.placeholder = "Search directory... (Click header to expand)";
+    } else {
+        projectSearch.placeholder = "Search directory...";
+    }
+}
 // --- 3. BUILD DIRECTORY ---
 Object.keys(projects).forEach(key => {
     const listItem = document.createElement('li');
@@ -160,11 +180,32 @@ Object.keys(projects).forEach(key => {
     link.addEventListener('click', (e) => {
         e.preventDefault(); 
         loadProject(key);
+        
+        // Only collapse the list if the user is on a smaller screen (under 768px)
+        if (window.innerWidth < 768) {
+            document.getElementById('project-list').classList.add('collapsed');
+            updatePlaceholderState();
+        }
     });
 
     listItem.appendChild(link);
     listContainer.appendChild(listItem);
 });
+
+document.getElementById('project-search').addEventListener('focus', () => {
+    document.getElementById('project-list').classList.remove('collapsed');
+    updatePlaceholderState();
+});
+
+// Clicking the top directory path header also restores the file list view
+const dirHeader = document.querySelector('.directory-header');
+if (dirHeader) {
+    dirHeader.style.cursor = 'pointer';
+    dirHeader.addEventListener('click', () => {
+        // Toggles the list view open or closed when the path header is clicked
+        document.getElementById('project-list').classList.toggle('collapsed');
+    });
+}
 
 // --- 4. INITIAL LOAD ---
 window.onload = () => {
@@ -172,6 +213,11 @@ window.onload = () => {
     const initialId = params.get('id');
     if (initialId && projects[initialId]) {
         loadProject(initialId);
+
+        if (window.innerWidth < 768) {
+            document.getElementById('project-list').classList.add('collapsed');
+        }
     }
+    updatePlaceholderState();
 };
 </script>

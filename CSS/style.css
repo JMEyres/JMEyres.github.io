@@ -225,18 +225,22 @@ a { text-decoration: none; transition: 0.2s; }
 }
 
 .gallery-item {
-    width: 100%; /* Single block rows by default on mobile devices */
     margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 5px;
+    
+    /* Default: 2 columns on small/mobile screens (accounting for the 15px gap) */
+    width: calc(50% - 8px); 
+    box-sizing: border-box;
 }
 
 .gallery-thumb {
     width: 100%;
-    height: 180px;
-    object-fit: contain;
+    height: auto;
+    aspect-ratio: 16 / 9;   /* Locks the frame to a horizontal game-screenshot shape */
+    object-fit: contain;      /* Fills the box cleanly without distortion */
     border: 1px solid var(--accent-orange);
     background: rgba(0, 0, 0, 0.3);
     cursor: pointer;
@@ -597,6 +601,234 @@ a { text-decoration: none; transition: 0.2s; }
     line-height: 1.5;
     margin-left: 20px; /* Indents the text slightly below the title */
     margin-bottom: 10px;
+}
+/* Core Layout Grid */
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* 2/3 for main content, 1/3 for sidebar */
+    gap: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.system-title {
+    margin: 40px auto 20px 2px; /* 2. "auto" centers the text box itself on the screen */
+    padding: 0 20px;             /* 3. Matches your layout's side gutters for alignment */
+    box-sizing: border-box;
+    
+    color: #ffffff;
+    font-family: monospace; /* Ties it back to your system aesthetic */
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    align-self: left;
+}
+
+/* Modular Panels */
+.panel-card {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 122, 26, 0.15); /* Theme orange border */
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.panel-card h3 {
+    color: var(--accent-orange);
+    font-size: 1.1rem;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* Narrative content adjustments */
+.panel-card p {
+    color: #e0e0e0;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Service History Timeline Logs */
+.history-item {
+    position: relative;
+    border-left: 2px solid rgba(255, 122, 26, 0.3);
+    padding-left: 20px;
+    margin-bottom: 30px;
+}
+
+.history-item h4 {
+    color: #ffffff;
+    margin: 5px 0;
+    font-size: 1.05rem;
+}
+
+.history-item .location {
+    color: #888888;
+    font-size: 0.85rem;
+    display: block;
+}
+
+/* Console Timestamp Style */
+.timestamp {
+    display: inline-block;
+    font-size: 0.75rem;
+    background: rgba(255, 122, 26, 0.1);
+    color: var(--accent-orange);
+    padding: 2px 8px;
+    border: 1px solid rgba(255, 122, 26, 0.3);
+    font-weight: bold;
+}
+
+/* Sidebar Specifications */
+.sticky-sidebar {
+    position: sticky;
+    top: 40px; /* Kept pinned when scrolling down long history entries */
+}
+
+.manifest-group {
+    margin-bottom: 25px;
+}
+
+.manifest-group h4 {
+    color: #ffffff;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+}
+.cv-download-block {
+    margin-top: 30px;
+    border-top: 1px dashed rgba(255, 122, 26, 0.2);
+    padding-top: 20px;
+}
+
+.cv-download-btn {
+    display: block; /* Keeps the highlight tight around the text */
+    padding: 8px;
+    margin-top: 20px;      /* Adds separation from the tools list above */
+    color: var(--accent-orange);
+    text-decoration: none;
+    font-family: monospace;
+    transition: background 0.1s ease-in-out, color 0.1s ease-in-out;
+}
+
+.cv-download-btn:hover {
+    background: var(--accent-orange);
+    color: black;
+}
+/* The compact background container wrapping everything */
+.compact-terminal-footer {
+    display: flex;
+    flex-direction: column;         /* Stacks the links line over the copyright line */
+    align-items: flex-start;        /* Keeps everything aligned to the left orange border */
+    
+    width: 80%;
+    margin: 60px auto 0 auto;
+    padding: 20px 25px;             /* Clean padding inside the green box */
+    box-sizing: border-box;
+    
+    background: rgba(20, 30, 25, 0.6); /* Your dark green container background */
+    border-left: 2px solid var(--accent-orange); /* Signature vertical accent line */
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.compact-portfolio-footer {
+    display: flex;
+    flex-direction: column;         /* Stacks the links line over the copyright line */
+    align-items: flex-start;        /* Keeps everything aligned to the left orange border */
+    bottom: 0;
+    
+    width: 100%;
+    margin: 60px auto 0 auto;
+    padding: 20px 25px;             /* Clean padding inside the green box */
+    box-sizing: border-box;
+    
+    background: var(--card-bg);
+    border-top: 2px solid var(--accent-orange); /* Signature vertical accent line */
+    font-family: 'Courier New', Courier, monospace;
+
+    position: fixed;
+    left: 50%;          /* Centers the 80%-width block horizontally on the screen */
+    transform: translateX(-50%);
+    z-index: 999;
+}
+
+/* Row 1: Horizontal Link Cluster */
+.footer-links-group {
+    display: flex;
+    flex-direction: row;            /* Forces all links to sit left-to-right on one line */
+    align-items: center;
+    flex-wrap: wrap;                /* Lets links wrap cleanly on small mobile screens */
+    gap: 25px;                      /* Horizontal spacing between each link */
+}
+
+/* Links typography styling */
+.custom-footer-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transition: color 0.15s ease-in-out, text-shadow 0.15s ease-in-out;
+}
+
+.custom-footer-link:hover {
+    color: var(--accent-orange);
+    text-shadow: 0 0 8px var(--accent-orange);
+}
+
+/* Row 2: Tiny copyright sitting cleanly underneath */
+.tiny-copyright {
+    color: #777777;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+/* Responsive collapse for mobile views */
+@media (max-width: 900px) {
+    .dashboard-container {
+        grid-template-columns: 1fr; /* Stack into a single column */
+    }
+    .sticky-sidebar {
+        position: static;
+    }
+}
+/* ==========================================================================
+   MOBILE QUERY OVERRIDES (Unlocks scrolling and enables collapse)
+   ========================================================================== */
+@media (max-width: 767px) {
+    /* 1. Release the browser page frame lock so your thumb can scroll the screen */
+    html, body {
+        height: auto !important;
+        overflow: auto !important;
+        overflow-x: hidden !important;
+    }
+
+    /* 2. Smash the grid columns down into a simple stacked vertical row layout */
+    .explorer-layout {
+        display: flex;
+        flex-direction: column;
+        height: auto !important;
+        padding: 15px;
+        overflow: visible !important;
+    }
+
+    /* 3. Allow the directory box to size itself dynamically based on content */
+    .project-directory {
+        width: 100% !important;
+        height: auto !important;
+        max-height: 250px; /* Prevents an ultra-long project list from eating the screen */
+    }
+
+    /* 4. Release the text window bounds so it flows down the page naturally */
+    .project-view {
+        width: 100% !important;
+        height: auto !important;
+        overflow-y: visible !important; 
+        padding-right: 0;
+    }
+
+    /* 5. Force the outer container wrapper to fully disappear when hidden by JS */
+    .project-directory.collapsed {
+        display: none !important;
+    }
 }
 /* -------------------- Media Queries for Tablets & Desktops -------------------- */
 @media (min-width: 768px) {

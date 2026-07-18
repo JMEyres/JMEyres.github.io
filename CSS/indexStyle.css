@@ -540,6 +540,52 @@ footer {
     color: var(--accent-orange);
     text-shadow: 0 0 8px var(--accent-orange);
 }
+/* The compact background container wrapping everything */
+.compact-terminal-footer {
+    display: flex;
+    flex-direction: column;         /* Stacks the links line over the copyright line */
+    align-items: flex-start;        /* Keeps everything aligned to the left orange border */
+    
+    width: 80%;
+    margin: 60px auto 0 auto;
+    padding: 20px 25px;             /* Clean padding inside the green box */
+    box-sizing: border-box;
+    
+    background: rgba(20, 30, 25, 0.6); /* Your dark green container background */
+    border-left: 2px solid var(--accent-orange); /* Signature vertical accent line */
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Row 1: Horizontal Link Cluster */
+.footer-links-group {
+    display: flex;
+    flex-direction: row;            /* Forces all links to sit left-to-right on one line */
+    align-items: center;
+    flex-wrap: wrap;                /* Lets links wrap cleanly on small mobile screens */
+    gap: 25px;                      /* Horizontal spacing between each link */
+}
+
+/* Links typography styling */
+.custom-footer-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transition: color 0.15s ease-in-out, text-shadow 0.15s ease-in-out;
+}
+
+.custom-footer-link:hover {
+    color: var(--accent-orange);
+    text-shadow: 0 0 8px var(--accent-orange);
+}
+
+/* Row 2: Tiny copyright sitting cleanly underneath */
+.tiny-copyright {
+    color: #777777;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
 /* -------------------- Media Queries for Tablets & Desktops -------------------- */
 @media (min-width: 768px) {
     .hero-header {
