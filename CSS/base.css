@@ -1,0 +1,280 @@
+:root {
+    /* Background & Core Colors */
+    --bg-color: #0B1410;
+    --bg-gradient-start: #0f1f18; 
+    --bg-gradient-end: #050505;
+    --text-color: #e6eae3;
+    --card-bg: #192923;
+    
+    /* UI Accents */
+    --accent-orange: #FF7A1A;
+    --window-glass: rgba(0, 0, 0, 0.4);
+    --shadow-glow: rgba(255, 122, 26, 0.15);
+    
+    --radius: 12px;
+    --gap: 30px;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    background: linear-gradient(to bottom, var(--bg-gradient-start), var(--bg-gradient-end)) fixed;
+    color: var(--text-color);
+    min-height: 100vh;
+    min-height: 100dvh; /* Smooth toolbar handling on mobile viewports */
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevents accidental sideways scrolling */
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--card-bg);
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+/* Typography & Links */
+h2 { color: var(--accent-orange); margin-bottom: 1rem; }
+
+a { text-decoration: none; transition: 0.2s; }
+
+/* Global Browser Scrollbars */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px; /* Horizontal bar sizing if needed */
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-orange);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ff9d54;
+    box-shadow: 0 0 15px rgba(255, 122, 26, 0.6);
+}
+
+/* Header & Footer */
+.simple-header {
+    display: flex;
+    flex-direction: column; /* Mobile first layout stacking */
+    gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background-color: var(--card-bg);
+}
+
+.simple-header .logo img { 
+    height: 45px; 
+    transition: all 0.3s ease;
+}
+
+.simple-header .logo:hover img { 
+    filter: drop-shadow(0 0 4px var(--accent-orange)) brightness(1.2);
+    transform: scale(1.05);
+}
+
+
+.hero-links {
+    display: flex;
+    flex-wrap: wrap; /* Allows links to naturally break on small screens */
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.hero-links a {
+    color: var(--accent-orange);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.hero-links a:hover {
+    text-decoration: underline;
+    color: #fff;
+    text-shadow: 0 0 8px var(--accent-orange);
+}
+
+.compact-terminal-footer {
+    display: flex;
+    flex-direction: column;         /* Stacks the links line over the copyright line */
+    align-items: flex-start;        /* Keeps everything aligned to the left orange border */
+    
+    width: 80%;
+    margin: 60px auto 0 auto;
+    padding: 20px 25px;             /* Clean padding inside the green box */
+    box-sizing: border-box;
+    
+    background: rgba(20, 30, 25, 0.6); /* Your dark green container background */
+    border-left: 2px solid var(--accent-orange); /* Signature vertical accent line */
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Row 1: Horizontal Link Cluster */
+.footer-links-group {
+    display: flex;
+    flex-direction: row;            /* Forces all links to sit left-to-right on one line */
+    align-items: center;
+    flex-wrap: wrap;                /* Lets links wrap cleanly on small mobile screens */
+    gap: 25px;                      /* Horizontal spacing between each link */
+}
+
+/* Links typography styling */
+.custom-footer-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    transition: color 0.15s ease-in-out, text-shadow 0.15s ease-in-out;
+}
+
+.custom-footer-link:hover {
+    color: var(--accent-orange);
+    text-shadow: 0 0 8px var(--accent-orange);
+}
+
+/* Row 2: Tiny copyright sitting cleanly underneath */
+.tiny-copyright {
+    color: #777777;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 900px) {
+    .dashboard-container {
+        grid-template-columns: 1fr; /* Stack into a single column */
+    }
+    .sticky-sidebar {
+        position: static;
+    }
+}
+/* ==========================================================================
+   MOBILE QUERY OVERRIDES (Unlocks scrolling and enables collapse)
+   ========================================================================== */
+@media (max-width: 767px) {
+    /* 1. Release the browser page frame lock so your thumb can scroll the screen */
+    html, body {
+        height: auto !important;
+        overflow: auto !important;
+        overflow-x: hidden !important;
+    }
+
+    /* 2. Smash the grid columns down into a simple stacked vertical row layout */
+    .explorer-layout {
+        display: flex;
+        flex-direction: column;
+        height: auto !important;
+        padding: 15px;
+        overflow: visible !important;
+    }
+
+    /* 3. Allow the directory box to size itself dynamically based on content */
+    .project-directory {
+        width: 100% !important;
+        height: auto !important;
+        max-height: 250px; /* Prevents an ultra-long project list from eating the screen */
+    }
+
+    /* 4. Release the text window bounds so it flows down the page naturally */
+    .project-view {
+        width: 100% !important;
+        height: auto !important;
+        overflow-y: visible !important; 
+        padding-right: 0;
+    }
+
+    /* 5. Force the outer container wrapper to fully disappear when hidden by JS */
+    .project-directory.collapsed {
+        display: none !important;
+    }
+}
+/* -------------------- Media Queries for Tablets & Desktops -------------------- */
+@media (min-width: 768px) {
+    html, body {
+       html:has(.content-wrapper), 
+        body:has(.content-wrapper) {
+            overflow-y: auto !important;
+        }
+    }
+
+    .links-track {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .simple-header {
+        flex-direction: row; /* Horizontal navbar flow toggled */
+        padding: 1rem 2rem;
+    }
+
+    .simple-header .logo img { 
+        height: 50px; 
+    }
+
+    .explorer-layout {
+        flex-direction: row; /* Locks side-by-side column positioning */
+        padding: 20px;
+        overflow: hidden;
+    }
+
+    .project-directory {
+        width: 250px; /* Fixed functional column width reintroduced */
+        max-height: none; 
+    }
+
+    .project-view {
+        padding-right: 10px;
+    }
+
+    .gallery-item {
+        width: calc(33.33% - 10px); /* 3 column presentation row */
+    }
+
+    .gallery-thumb {
+        height: 200px;
+    }
+
+    .project-dossier {
+        flex-direction: row;
+    }
+
+    .dossier-sidebar {
+        max-width: 30%;
+        border-right: 1px solid rgba(255, 122, 26, 0.2);
+        border-bottom: none;
+        padding-right: 20px;
+        padding-bottom: 0;
+    }
+    
+    .gallery-item {
+        width: calc(33.33% - 10px); /* Forces 3 columns */
+    }
+}

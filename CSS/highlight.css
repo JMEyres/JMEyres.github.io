@@ -1,0 +1,196 @@
+.explorer-layout {
+    display: flex;
+    flex-direction: column; /* Columns break vertically into rows on mobile */
+    gap: 20px;
+    padding: 15px;
+    flex: 1;
+    min-height: 0;
+    box-sizing: border-box;
+}
+
+.project-view {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; 
+    min-height: 0;
+    min-width: 0;
+    padding-right: 5px;
+}
+
+.project-image {
+    width: 100%;
+    max-width: 850px;
+    height: auto;
+    display: block;
+}
+
+.project-hero {
+    width: 100%;           
+    max-width: 850px;      
+    margin: 0 auto 20px auto; 
+    border: 1px solid var(--accent-orange);
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 15px rgba(255, 122, 26, 0.1);
+    flex-shrink: 0;        
+}
+
+.video-responsive-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-height: 450px;     
+    aspect-ratio: 16 / 9;  
+    overflow: hidden;
+}
+
+.video-responsive-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.project-dossier {
+    display: flex;
+    flex-direction: column; /* Vertical stack fallback on mobile */
+    gap: var(--gap);
+    margin-top: 20px;
+    width: 100%;          
+    min-width: 0;          
+}
+
+.dossier-sidebar {
+    flex: 1;
+    max-width: 100%;
+    border-bottom: 1px solid rgba(255, 122, 26, 0.2);
+    padding-bottom: 20px;
+}
+
+.dossier-content {
+    flex: 2;
+}
+
+.storyboard-container {
+  width: 100%;
+  max-width: 800px;             /* Matches the layout width of your text content */
+  margin: 32px auto;            /* Centers it and provides clean vertical separation */
+  background: rgba(15, 20, 20, 0.7); /* Faint dark background backdrop */
+  border: 1px solid rgba(238, 110, 36, 0.2); /* Faint orange border to match the HUD theme */
+  border-left: 4px solid #ee6e24; /* Strong accent marker line matching your text cards */
+  border-radius: 2px;
+  padding: 12px;                /* Creates a clean mechanical bezel around the screen */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
+}
+
+/* Make the iframe responsive and fit the bezel perfectly */
+.storyboard-container iframe {
+  width: 100%;
+  height: 450px;                /* Fixed display height for the viewport window */
+  display: block;
+  border: none;
+  background: #ffffff;          /* Matches Miro's internal grid canvas background */
+  border-radius: 1px;
+}
+
+.engine-spec-list {
+    list-style: none;
+    padding-left: 15px; /* Indent the stack */
+    margin: 0;
+    border-left: 1px dashed rgba(255, 122, 26, 0.3); /* The dashed connector line in your theme orange */
+}
+
+/* Individual stack frames */
+.engine-spec-list li {
+    position: relative;
+    padding-left: 25px; /* Spacing for the branch arrow */
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    color: #e0e0e0;
+}
+
+/* Adding function syntax "()" dynamically so your HTML stays clean */
+.engine-spec-list li::after {
+    content: "()";
+    color: #666666; /* Grayed out parentheses to look like real code */
+}
+
+/* The branch connectors ↳ */
+.engine-spec-list li::before {
+    content: "↳"; 
+    position: absolute;
+    left: 4px; /* Align it perfectly to overlap with the dashed border line */
+    top: 0;
+    color: var(--accent-orange);
+    font-weight: bold;
+}
+.component-list {
+    font-family: 'Courier New', Courier, monospace;
+    margin: 20px 0;
+}
+
+/* The Term / Title */
+.component-list dt {
+    color: var(--accent-orange);
+    font-weight: bold;
+    font-size: 1rem;
+    margin-top: 15px;
+}
+
+/* The Explanation */
+.component-list dd {
+    color: #e0e0e0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-left: 20px; /* Indents the text slightly below the title */
+    margin-bottom: 10px;
+}
+
+.spec-list{
+    list-style-type:none;
+}
+
+.file-link {
+    display: block;
+    padding: 8px;
+    color: var(--accent-orange);
+    text-decoration: none;
+    font-family: monospace;
+}
+
+.file-link:hover {
+    background: var(--accent-orange);
+    color: black;
+}
+
+.crew-log-image {
+  background: rgba(15, 20, 20, 0.7);    /* Slightly darkens the grid background for readability */
+  border: 1px solid rgba(238, 110, 36, 0.15); /* Very subtle orange bounding box */
+  border-left: 4px solid #ee6e24;       /* Sharp, solid orange accent line on the left side */
+  padding: 10px 10px;                  /* Clean breathing room inside the box */
+  border-radius: 2px;                  /* Subtle blocky tech corners rather than round circles */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Drops a shadow so it lifts off the background grid */
+  margin-top: 20px;
+     width: 100%;
+    max-width: 850px;
+    height: auto;
+    display: block;
+}
+
+/* Container styling */
+.engine-pipeline {
+    margin: 20px 0;
+    font-family: 'Courier New', Courier, monospace; /* Monospace keeps everything perfectly aligned */
+}
+
+.pipeline-title {
+    display: block;
+    color: #888888; /* Dimmed, like a code comment or category */
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}

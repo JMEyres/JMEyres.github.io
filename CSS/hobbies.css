@@ -1,0 +1,74 @@
+.content-wrapper {
+    width: 95%;
+    margin: 0 auto;
+    padding: 20px 15px;
+}
+
+/* Isolated layout matrix for the hobbies page logs */
+.hobby-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Isolated card components */
+/* 1. Ensure the individual item caps its scaling and hides overflow */
+.hobby-gallery-item {
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    box-sizing: border-box;
+    overflow: hidden; /* Prevents images from bleeding out the sides */
+}
+
+/* 2. Force the actual image tag to adapt to the container's width */
+.hobby-gallery-thumb {
+    width: 100%;
+    max-width: 100%;  /* STRICT BOUNDARY: Never allow it to exceed the figure card */
+    height: 180px;
+    object-fit: contain; /* Crops cleanly to fill the space without distortion */
+    border: 1px solid var(--accent-orange);
+    background: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    display: block;    /* Removes extra baseline inline alignment gaps */
+}
+
+.hobby-gallery-item:hover .hobby-gallery-thumb {
+    border-color: #fff;
+    box-shadow: 0 0 10px var(--accent-orange);
+}
+
+/* Isolated caption text blocks */
+.hobby-gallery-caption {
+    font-family: monospace;
+    font-size: 0.75rem;
+    color: var(--accent-orange);
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    margin-top: 4px;
+}
+
+.crew-log-image {
+  background: rgba(15, 20, 20, 0.7);    /* Slightly darkens the grid background for readability */
+  border: 1px solid rgba(238, 110, 36, 0.15); /* Very subtle orange bounding box */
+  border-left: 4px solid #ee6e24;       /* Sharp, solid orange accent line on the left side */
+  padding: 10px 10px;                  /* Clean breathing room inside the box */
+  border-radius: 2px;                  /* Subtle blocky tech corners rather than round circles */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Drops a shadow so it lifts off the background grid */
+  margin-top: 20px;
+     width: 100%;
+    max-width: 850px;
+    height: auto;
+    display: block;
+}
