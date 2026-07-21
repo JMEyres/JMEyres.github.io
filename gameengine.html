@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ludonarrative Design | Josh Eyres</title>
+  <title>NSEngine | Josh Eyres</title>
   <link rel="stylesheet" href="CSS/base.css" />
   <link rel="stylesheet" href="CSS/highlight.css" />
   <link rel="icon" type="image/png" href="Images/favicon-32x32.png">
@@ -66,8 +66,19 @@
 
                 <h3>02 // ARCHITECTURE_DETAILED</h3>
                 <p>
-                  Tech used C++, Rend, SDL, ReactPhysics3D
+                  The engine is architected using a modern, lightweight C++ stack, selecting specialized third-party libraries to handle low-level subsystems while keeping the core framework modular and performant.
+
                 </p>
+                <dl class="component-list">
+                  <dt>Rend (Graphics API Wrapper)</dt>
+                  <dd>Acts as the dedicated 3D rendering abstraction layer, wrapping OpenGL to cleanly manage shader compilation, texture binding, and vertex buffer generation. A big reason I used this library is that you do not need to clean up memory because it utilizes RAII and releases its resources properly, basically meaning that any resources are automatically cleaned up when they go out of scope.</dd>
+                  
+                  <dt>SDL (Platform Abstraction)</dt>
+                  <dd>Handles low-level platform management, responsible for opening the application window, maintaining the OpenGL hardware context, and processing cross-platform input event polling.</dd>
+                  
+                  <dt>ReactPhysics3D (Physics Subsystem)</dt>
+                  <dd>An open-source 3D physics library integrated directly into the engine to handle rigid body dynamics, momentum, and precise spatial collision resolution.</dd>
+                </dl>
                 <div class="engine-pipeline">
                   <span class="pipeline-title">Engine Loop</span>
                   <p>The engine has 5 different update cycles used to trigger events, handle physics, rendering, etc. These are shown below, the names are mostly self explanatory, but there are explanations for where each cycle is called in the paper linked at the bottom of this page.</p>
@@ -86,7 +97,7 @@
                <br>
                <h4>Entity Component System</h4>
                 <p>
-                  As i mentioned previously this game engine leverages an Entity component system, which as the name suggests (and as i have previously lightly touched on) breaks objects down into 3 parts. The entity itself, this is simply a unique id that acts as a container, think the chassis of a car holding the rest of the components together. Then you have the components and systems, which in pure ECS frameworks are separate. However, this engine utilizes more of an object-oriented ECS framework that combines the two, in the car analogy they would be the computers (components) and engine (systems). These components handle their own update cycles when relevant as seen in the image below.
+                  As I mentioned previously this game engine leverages an Entity component system, which as the name suggests (and as I have previously lightly touched on) breaks objects down into 3 parts. The entity itself, this is simply a unique id that acts as a container, think the chassis of a car holding the rest of the components together. Then you have the components and systems, which in pure ECS frameworks are separate. However, this engine utilizes more of an object-oriented ECS framework that combines the two, in the car analogy they would be the computers (components) and engine (systems). These components handle their own update cycles when relevant as seen in the image below.
                 </p>
                 <img src="Images/GameEngine/RendererComponent.png" class="crew-log-image" style="width: 100%; max-width: 600px; height: 450px; object-fit: contain;">
                 <p>The components currently included within the engine are as follows:</p>
@@ -94,32 +105,35 @@
                       <dt>Audio Source</dt>
                       <dd>A component for handling where audio gets played</dd>
                       <dt>Box Collider</dt>
-                      <dd></dd>
+                      <dd>Simple AABB Collision detection</dd>
                       <dt>Camera</dt>
-                      <dd></dd>
+                      <dd>The component responsible for what the player sees in game</dd>
                       <dt>Capsule Collider</dt>
-                      <dd></dd>
+                      <dd>Collider in the shape of a capsule similar to box collider</dd>
                       <dt>GUI</dt>
-                      <dd></dd>
+                      <dd>Basic component to handle on screen user interfaces</dd>
                       <dt>Renderer</dt>
-                      <dd></dd>
+                      <dd>This is the component responsible for rendering 3D models in the game</dd>
                       <dt>Rigidbody</dt>
-                      <dd></dd>
+                      <dd>The component that handles entity physics, movement, collision etc </dd>
                       <dt>Sprite Renderer</dt>
-                      <dd></dd>
+                      <dd>A component for specifically rendering 2d Sprites</dd>
                       <dt>Transform</dt>
-                      <dd></dd>
+                      <dd>Component that stores the positional data for the entity it is attached to</dd>
                       <dt>Triangle Renderer</dt>
-                      <dd></dd>
+                      <dd>A simple test component that renders a triangle</dd>
                   </dl>
                 <img src="Images/GameEngine/Component.png" class="crew-log-image" style="width: 100%; max-width: 600px; height: 450px; object-fit: contain;">
                <br>
+               <h4>Resources and Inheritance</h4>
                 <p>
-                  Resources and inheritance
+                  Resources are how the classes that use assets get the necessary data within this engine, there is a base resource class that holds common data between the resources, and inheriting from that are the Audio, Model and Texture classes that override the common functions to implement the functionality they need.
                 </p>
                   <img src="Images/GameEngine/ResourceSystem.png" class="crew-log-image" style="width: 100%; max-width: 600px; height: 300px; object-fit: contain;">
+                  <br>
+                  <h4>Simple Game Demo</h4>
                 <p>
-                  Simple game demo
+                  To validate the engine’s core pipeline, I developed a lightweight demonstration project within the framework. While minimal in scope, the demo successfully exercises the interaction between the entity hierarchy, rendering loops, and component systems. It proves that the engine provides a practical, working abstraction layer, allowing gameplay features to be implemented rapidly without needing to write low-level boilerplate code.
                 </p>
                 
                 <br>
