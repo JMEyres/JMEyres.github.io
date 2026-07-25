@@ -18,8 +18,8 @@ const projects = {
     There are also the moral and ethical implications to take note of using AI in this manner, the main one being using an AI model to take that job from a skilled worker essentially making them redundant, certainly as of this projects creation there was no threat of jobs being taken as the output simply wasn't high enough quality. Also the question of who owns the IP of the generated assets which is very unclear and a highly debated topic recently.
     
     Overall this is something that could be used in house for prototype but could definitely NOT be released due to quality, ethical and ip issues it's also my personal belief that if a company or developer has the modellers/modelling ability or the option to pay for assets created by skilled designers they absolutely should over using generative AI in this manner.`,
-    "imgPath": "Images/LNDScreenshot.png", // Match your CSS variable format
-    "gallery": ["Images/LNDScreenshot.png", "Images/WhatGoesAroundComesAround.png", "Images/LNDScreenshot.png","Images/LNDScreenshot.png","Images/LNDScreenshot.png","Images/LNDScreenshot.png","Images/LNDScreenshot.png",],
+    "imgPath": "Images/UndergradDiss/House1.png", // Match your CSS variable format
+    "gallery": ["Images/UndergradDiss/Headphones.png", "Images/UndergradDiss/Turtle.png", "Images/UndergradDiss/House.png"],
     "icon": "Images/alpha-icon.png",
     "tags": ["Unity", "C#", "AI"]
   },
@@ -46,27 +46,11 @@ const projects = {
     "tags": ["C++", "OpenGL"]
   },
   "project-charlie": {
-    "dirTitle": "BFX Game Jam | What goes around comes around",
-    "title": "What goes around comes around",
+    "dirTitle": "Project-Charlie",
+    "title": "",
     "description": ``,
     "bg": "url('Images/beta-bg.jpg')",
     "icon": "Images/beta-icon.png",
     "tags": ["HTML", "CSS", "JS"]
   },
-    "project-delta": {
-    "dirTitle": "Project Delta",
-    "title": "Project Delta",
-    "description": `A retro-style OS interface.`,
-    "bg": "url('Images/beta-bg.jpg')",
-    "icon": "Images/beta-icon.png",
-    "tags": ["HTML", "CSS", "JS"]
-  },
-    "project-echo": {
-    "dirTitle": "Project Echo",
-    "title": "Project Echo",
-    "description": `A retro-style OS interface.`,
-    "bg": "url('Images/beta-bg.jpg')",
-    "icon": "Images/beta-icon.png",
-    "tags": ["HTML", "CSS", "JS"]
-  }
 };
