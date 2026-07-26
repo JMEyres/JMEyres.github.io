@@ -76,9 +76,21 @@
 <script>
 const listContainer = document.getElementById('project-list');
 const searchInput = document.getElementById('project-search');
+const projectList = document.getElementById('project-list');
+const projectDir = document.querySelector('.project-directory');
+
 document.getElementById('gallery-header').classList.add('hidden');
 
-// --- 1. SEARCH LOGIC ---
+// --- 1. HELPER: CONTEXTUAL PLACEHOLDER ---
+function updatePlaceholderState() {
+    if (projectList.classList.contains('collapsed')) {
+        searchInput.placeholder = "Search directory... (Click header to expand)";
+    } else {
+        searchInput.placeholder = "Search directory...";
+    }
+}
+
+// --- 2. SEARCH INPUT LOGIC ---
 searchInput.addEventListener('input', (e) => {
     const term = e.target.value.toLowerCase();
     const items = listContainer.getElementsByTagName('li');
@@ -89,86 +101,75 @@ searchInput.addEventListener('input', (e) => {
     });
 });
 
-// --- 2. UPDATE UI FUNCTION ---
+// Focusing the search bar on mobile expands the list back out
+searchInput.addEventListener('focus', () => {
+    projectList.classList.remove('collapsed');
+    updatePlaceholderState();
+});
 
+// --- 3. UI RENDERER FUNCTION ---
 function loadProject(id) {
-  const data = projects[id];
-  if (!data) return;
+    const data = projects[id];
+    if (!data) return;
 
-  const mainImg = document.getElementById('proj-img');
-  const galleryArea = document.getElementById('gallery-area');
-  const galleryHeader = document.getElementById('gallery-header');
+    const mainImg = document.getElementById('proj-img');
+    const galleryArea = document.getElementById('gallery-area');
+    const galleryHeader = document.getElementById('gallery-header');
 
-  // --- 1. Handle Main Data ---
-  document.getElementById('proj-title').innerText = data.title;
-  document.getElementById('proj-header').innerText = data.title;
-  document.getElementById('proj-desc').innerText = data.description;
-  document.getElementById('proj-icon').src = data.icon || '';
+    // Handle Main Data
+    document.getElementById('proj-title').innerText = data.title;
+    document.getElementById('proj-header').innerText = data.title;
+    document.getElementById('proj-desc').innerText = data.description;
+    document.getElementById('proj-icon').src = data.icon || '';
 
-  // --- 2. Handle the Main Image ---
-  if (data.imgPath) {
-      mainImg.src = data.imgPath;
-      mainImg.style.display = "block";
-      mainImg.style.opacity = "0"; // Start hidden for fade-in
-      
-      mainImg.onload = function() {
-          mainImg.style.opacity = "1";
-      };
+    // Handle Main Image
+    if (data.imgPath) {
+        mainImg.src = data.imgPath;
+        mainImg.style.display = "block";
+        mainImg.style.opacity = "0"; 
+        
+        mainImg.onload = function() {
+            mainImg.style.opacity = "1";
+        };
 
-      // Update the CSS Background variable for the glass effect
-      document.getElementById('window-container').style.setProperty('--window-bg', `url('${data.imgPath}')`);
-  } else {
-      mainImg.style.display = "none";
-      document.getElementById('window-container').style.setProperty('--window-bg', 'none');
-  }
-
-  // --- 3. Handle Gallery Images ---
-  galleryArea.innerHTML = ''; // Clear old gallery
-
-  if (data.gallery && data.gallery.length > 0) {
-    galleryHeader.classList.remove('hidden');
-    data.gallery.forEach(src => {
-      // 1. Create a wrapper 'figure' to hold img + caption
-      const figure = document.createElement('figure');
-      figure.className = "gallery-item";
-
-      // 2. Create the Image
-      const extraImg = document.createElement('img');
-      extraImg.src = src;
-      extraImg.className = "gallery-thumb";
-      extraImg.onclick = () => window.open(src, '_blank');
-
-      // 3. Create the Caption (Cleaning up the file name)
-      const caption = document.createElement('figcaption');
-      const fileName = src.split('/').pop().split('.')[0]; // Gets 'alpha-bg' from 'Images/alpha-bg.jpg'
-      caption.innerText = fileName.replace(/-/g, ' ').toUpperCase(); // 'ALPHA BG'
-      caption.className = "gallery-caption";
-
-      // 4. Assemble and add to gallery
-      figure.appendChild(extraImg);
-      figure.appendChild(caption);
-      galleryArea.appendChild(figure);
-    });
-  }
-  else{
-    galleryHeader.classList.add('hidden');
-  }
-
-  // --- 4. Update URL ---
-  window.history.pushState(null, '', `?id=${id}`);
-}
-const projectSearch = document.getElementById('project-search');
-const projectList = document.getElementById('project-list');
-
-// Helper function to update placeholder text contextually
-function updatePlaceholderState() {
-    if (projectList.classList.contains('collapsed')) {
-        projectSearch.placeholder = "Search directory... (Click header to expand)";
+        document.getElementById('window-container').style.setProperty('--window-bg', `url('${data.imgPath}')`);
     } else {
-        projectSearch.placeholder = "Search directory...";
+        mainImg.style.display = "none";
+        document.getElementById('window-container').style.setProperty('--window-bg', 'none');
     }
+
+    // Handle Gallery Images
+    galleryArea.innerHTML = ''; 
+
+    if (data.gallery && data.gallery.length > 0) {
+        galleryHeader.classList.remove('hidden');
+        data.gallery.forEach(src => {
+            const figure = document.createElement('figure');
+            figure.className = "gallery-item";
+
+            const extraImg = document.createElement('img');
+            extraImg.src = src;
+            extraImg.className = "gallery-thumb";
+            extraImg.onclick = () => window.open(src, '_blank');
+
+            const caption = document.createElement('figcaption');
+            const fileName = src.split('/').pop().split('.')[0]; 
+            caption.innerText = fileName.replace(/-/g, ' ').toUpperCase(); 
+            caption.className = "gallery-caption";
+
+            figure.appendChild(extraImg);
+            figure.appendChild(caption);
+            galleryArea.appendChild(figure);
+        });
+    } else {
+        galleryHeader.classList.add('hidden');
+    }
+
+    // Update URL query string without reloading page
+    window.history.pushState(null, '', `?id=${id}`);
 }
-// --- 3. BUILD DIRECTORY ---
+
+// --- 4. BUILD SIDEBAR DIRECTORY ---
 Object.keys(projects).forEach(key => {
     const listItem = document.createElement('li');
     const project = projects[key];
@@ -178,38 +179,31 @@ Object.keys(projects).forEach(key => {
     link.className = "sidebar-link";
     link.innerText = project.dirTitle;
 
-    // Intercept clicks to prevent page flicker/reload
     link.addEventListener('click', (e) => {
         e.preventDefault(); 
+        
         loadProject(key);
         
-        // Only collapse the list if the user is on a smaller screen (under 768px)
-        if (window.innerWidth < 768) {
-            document.getElementById('project-list').classList.add('collapsed');
-            updatePlaceholderState();
-        }
+        // Automatically collapse the file list when a project is selected
+        projectList.classList.add('collapsed');
+        updatePlaceholderState();
     });
 
     listItem.appendChild(link);
     listContainer.appendChild(listItem);
 });
 
-document.getElementById('project-search').addEventListener('focus', () => {
-    document.getElementById('project-list').classList.remove('collapsed');
-    updatePlaceholderState();
-});
-
-// Clicking the top directory path header also restores the file list view
+// --- 5. DIRECTORY HEADER ACCORDION TOGGLE ---
 const dirHeader = document.querySelector('.directory-header');
 if (dirHeader) {
     dirHeader.style.cursor = 'pointer';
     dirHeader.addEventListener('click', () => {
-        // Toggles the list view open or closed when the path header is clicked
-        document.getElementById('project-list').classList.toggle('collapsed');
+        projectList.classList.toggle('collapsed');
+        updatePlaceholderState();
     });
 }
 
-// --- 4. INITIAL LOAD ---
+// --- 6. INITIAL PAGE LOAD ---
 window.onload = () => {
     const params = new URLSearchParams(window.location.search);
     const initialId = params.get('id');
@@ -217,7 +211,7 @@ window.onload = () => {
         loadProject(initialId);
 
         if (window.innerWidth < 768) {
-            document.getElementById('project-list').classList.add('collapsed');
+            projectList.classList.add('collapsed');
         }
     }
     updatePlaceholderState();
