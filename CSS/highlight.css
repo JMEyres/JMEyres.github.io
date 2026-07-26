@@ -194,3 +194,21 @@
     margin-bottom: 10px;
     letter-spacing: 1px;
 }
+
+/* FORCE ENTIRE PAGE & FOOTER INTO NATURAL SCROLL FLOW */
+body {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow-y: auto !important; /* Overrides overflow: hidden on body */
+}
+
+.explorer-layout {
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+}
+
+.project-view {
+    height: auto !important;
+    overflow: visible !important;
+}
