@@ -68,158 +68,55 @@
           &copy; 2026 Josh Eyres. All rights reserved.
       </span>
   </footer>
+
+  <!-- Modal Window for Creating/Editing Projects -->
+<div id="admin-modal" class="admin-modal">
+  <div class="admin-modal-body">
+    <h2 id="modal-heading" style="margin-top:0; color:#00ff66;">> PROJECT CONFIG</h2>
+    <form id="admin-form">
+      <input type="hidden" id="edit-project-key" />
+
+      <div class="admin-form-group">
+        <label>UNIQUE IDENTIFIER (e.g. "lonely-bookshop")</label>
+        <input type="text" id="form-key" class="admin-input" required />
+      </div>
+
+      <div class="admin-form-group">
+        <label>DIRECTORY TITLE (e.g. "BOOKSHOP.EXE")</label>
+        <input type="text" id="form-dirtitle" class="admin-input" required />
+      </div>
+
+      <div class="admin-form-group">
+        <label>FULL PROJECT TITLE</label>
+        <input type="text" id="form-title" class="admin-input" required />
+      </div>
+
+      <div class="admin-form-group">
+        <label>DESCRIPTION</label>
+        <textarea id="form-desc" class="admin-textarea" required></textarea>
+      </div>
+
+      <div class="admin-form-group">
+        <label>MAIN IMAGE FILE (Uploads to Images/)</label>
+        <input type="file" id="form-main-img" class="admin-input" accept="image/*" />
+        <small id="current-main-img-label" style="color:#666; margin-top:2px;"></small>
+      </div>
+
+      <div class="admin-form-group">
+        <label>GALLERY IMAGES (Uploads multiple to Images/)</label>
+        <input type="file" id="form-gallery-imgs" class="admin-input" accept="image/*" multiple />
+        <small id="current-gallery-label" style="color:#666; margin-top:2px;"></small>
+      </div>
+
+      <div class="admin-actions">
+        <button type="button" class="admin-btn" id="modal-cancel-btn">CANCEL</button>
+        <button type="submit" class="admin-btn" id="modal-save-btn">COMMIT TO REPO</button>
+      </div>
+    </form>
+  </div>
+</div>
+<script src="JS/projectScript.js"></script> 
+
 </body>
 </html>
 
-<script src="projects.js"></script>
-
-<script>
-const listContainer = document.getElementById('project-list');
-const searchInput = document.getElementById('project-search');
-document.getElementById('gallery-header').classList.add('hidden');
-
-// --- 1. SEARCH LOGIC ---
-searchInput.addEventListener('input', (e) => {
-    const term = e.target.value.toLowerCase();
-    const items = listContainer.getElementsByTagName('li');
-
-    Array.from(items).forEach(item => {
-        const title = item.textContent.toLowerCase();
-        item.style.display = title.includes(term) ? 'block' : 'none';
-    });
-});
-
-// --- 2. UPDATE UI FUNCTION ---
-
-function loadProject(id) {
-  const data = projects[id];
-  if (!data) return;
-
-  const mainImg = document.getElementById('proj-img');
-  const galleryArea = document.getElementById('gallery-area');
-  const galleryHeader = document.getElementById('gallery-header');
-
-  // --- 1. Handle Main Data ---
-  document.getElementById('proj-title').innerText = data.title;
-  document.getElementById('proj-header').innerText = data.title;
-  document.getElementById('proj-desc').innerText = data.description;
-  document.getElementById('proj-icon').src = data.icon || '';
-
-  // --- 2. Handle the Main Image ---
-  if (data.imgPath) {
-      mainImg.src = data.imgPath;
-      mainImg.style.display = "block";
-      mainImg.style.opacity = "0"; // Start hidden for fade-in
-      
-      mainImg.onload = function() {
-          mainImg.style.opacity = "1";
-      };
-
-      // Update the CSS Background variable for the glass effect
-      document.getElementById('window-container').style.setProperty('--window-bg', `url('${data.imgPath}')`);
-  } else {
-      mainImg.style.display = "none";
-      document.getElementById('window-container').style.setProperty('--window-bg', 'none');
-  }
-
-  // --- 3. Handle Gallery Images ---
-  galleryArea.innerHTML = ''; // Clear old gallery
-
-  if (data.gallery && data.gallery.length > 0) {
-    galleryHeader.classList.remove('hidden');
-    data.gallery.forEach(src => {
-      // 1. Create a wrapper 'figure' to hold img + caption
-      const figure = document.createElement('figure');
-      figure.className = "gallery-item";
-
-      // 2. Create the Image
-      const extraImg = document.createElement('img');
-      extraImg.src = src;
-      extraImg.className = "gallery-thumb";
-      extraImg.onclick = () => window.open(src, '_blank');
-
-      // 3. Create the Caption (Cleaning up the file name)
-      const caption = document.createElement('figcaption');
-      const fileName = src.split('/').pop().split('.')[0]; // Gets 'alpha-bg' from 'Images/alpha-bg.jpg'
-      caption.innerText = fileName.replace(/-/g, ' ').toUpperCase(); // 'ALPHA BG'
-      caption.className = "gallery-caption";
-
-      // 4. Assemble and add to gallery
-      figure.appendChild(extraImg);
-      figure.appendChild(caption);
-      galleryArea.appendChild(figure);
-    });
-  }
-  else{
-    galleryHeader.classList.add('hidden');
-  }
-
-  // --- 4. Update URL ---
-  window.history.pushState(null, '', `?id=${id}`);
-}
-const projectSearch = document.getElementById('project-search');
-const projectList = document.getElementById('project-list');
-
-// Helper function to update placeholder text contextually
-function updatePlaceholderState() {
-    if (projectList.classList.contains('collapsed')) {
-        projectSearch.placeholder = "Search directory... (Click header to expand)";
-    } else {
-        projectSearch.placeholder = "Search directory...";
-    }
-}
-// --- 3. BUILD DIRECTORY ---
-Object.keys(projects).forEach(key => {
-    const listItem = document.createElement('li');
-    const project = projects[key];
-    
-    const link = document.createElement('a');
-    link.href = `?id=${key}`;
-    link.className = "sidebar-link";
-    link.innerText = project.dirTitle;
-
-    // Intercept clicks to prevent page flicker/reload
-    link.addEventListener('click', (e) => {
-        e.preventDefault(); 
-        loadProject(key);
-        
-        // Only collapse the list if the user is on a smaller screen (under 768px)
-        if (window.innerWidth < 768) {
-            document.getElementById('project-list').classList.add('collapsed');
-            updatePlaceholderState();
-        }
-    });
-
-    listItem.appendChild(link);
-    listContainer.appendChild(listItem);
-});
-
-document.getElementById('project-search').addEventListener('focus', () => {
-    document.getElementById('project-list').classList.remove('collapsed');
-    updatePlaceholderState();
-});
-
-// Clicking the top directory path header also restores the file list view
-const dirHeader = document.querySelector('.directory-header');
-if (dirHeader) {
-    dirHeader.style.cursor = 'pointer';
-    dirHeader.addEventListener('click', () => {
-        // Toggles the list view open or closed when the path header is clicked
-        document.getElementById('project-list').classList.toggle('collapsed');
-    });
-}
-
-// --- 4. INITIAL LOAD ---
-window.onload = () => {
-    const params = new URLSearchParams(window.location.search);
-    const initialId = params.get('id');
-    if (initialId && projects[initialId]) {
-        loadProject(initialId);
-
-        if (window.innerWidth < 768) {
-            document.getElementById('project-list').classList.add('collapsed');
-        }
-    }
-    updatePlaceholderState();
-};
-</script>
