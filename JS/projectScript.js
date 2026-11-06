@@ -1,7 +1,7 @@
 // --- CONFIGURATION ---
 const GITHUB_CONFIG = {
   owner: 'JMEyres',           // Your GitHub username
-  repo: 'josheyres.github.io', // Your repository name
+  repo: 'JMEyres.github.io', // Your repository name
   branch: 'main',             // Branch to commit to (e.g. 'test-admin' for testing)
   dataPath: 'JS/projects.json'   // Relative path to your JSON data
 };
